@@ -27,14 +27,12 @@
   color: #000000 !important;  
 }
 
-// Corrige la couleur des titres dans le header pour toutes tailles d'écran
-@media all {
-  .masthead.custom-violet .site-title,
-  .masthead.custom-violet .site-subtitle,
-  .masthead.custom-violet h1,
-  .masthead.custom-violet p {
-    color: #000000 !important;
-  }
+
+.masthead.custom-violet .site-title,
+.masthead.custom-violet .site-subtitle,
+.masthead.custom-violet h1,
+.masthead.custom-violet p {
+  color: #000000 !important;
 }
 
 
