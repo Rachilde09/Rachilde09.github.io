@@ -4,17 +4,21 @@ layout: default
 
 <!-- Page Header -->
 {% if page.background %}
-<header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
-  {% else %}
+  <header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
+    <div class="container text-center">
+      <h1 class="site-title">Portfolio</h1>
+      <p class="site-subtitle">Bienvenue dans mon univers</p>
+    </div>
+  </header>
+{% else %}
   <header class="masthead custom-violet">
-  <div class="container text-center">
-    <h1 class="site-title">Portfolio</h1>
-    <p class="site-subtitle">Bienvenue dans mon univers</p>
-  </div>
-</header>
+    <div class="container text-center">
+      <h1 class="site-title">Portfolio</h1>
+      <p class="site-subtitle">Bienvenue dans mon univers</p>
+    </div>
+  </header>
+{% endif %}
 
-
- 
 
 
        
