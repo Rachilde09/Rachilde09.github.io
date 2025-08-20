@@ -1,12 +1,15 @@
 // Import Core Clean Blog SCSS
 @import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
 
-.custom-violet {
-  background: #ede7f6; /* Violet clair */
+// Ajout du style personnalisé pour le header
+.masthead.custom-violet {
+  background: #ede7f6 !important;
+  background-image: none !important; /* désactive toute image de fond */
   padding: 100px 0;
   color: #1a1a1a;
 }
 
+// Personnalisation du titre et sous-titre
 .site-title {
   font-size: 5rem;
   font-weight: 700;
@@ -18,4 +21,5 @@
   font-weight: 400;
   margin-top: 1rem;
 }
+
 
