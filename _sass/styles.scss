@@ -34,7 +34,7 @@
   color: #000000 !important;
 }
 
-/* Optionnel : couleur au survol */
+/* couleur au survol */
 #mainNav.navbar-light .navbar-nav .nav-link:hover {
   color: #2ea44f !important;
   text-shadow: 0 1px 1px #2f6f53;
@@ -47,4 +47,13 @@
   color: #000000 !important;
 }
 
+/* Mise en forme du corps de la page d'accueil */
+.portfolio-info {
+  padding: 40px 0;
+  background-color: #f9f9f9; /* ou garde le fond blanc si tu préfères */
+}
+.portfolio-info p {
+  font-size: 1.2rem;
+  color: #333;
+}
 
