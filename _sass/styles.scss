@@ -1,3 +1,76 @@
+// Import Core Clean Blog SCSS 
+@import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";  
+// Ajout du style personnalisé pour le header 
+.masthead.custom-violet {   
+  background: #ffffff !important;   
+  background-image: none !important; 
+  
+  /* désactive toute image de fond */   
+  padding: 100px 0;   color: #000000 !important;  
+}  
+
+// Personnalisation du titre et sous-titre 
+.site-title {   
+  font-size: 5rem;   
+  font-weight: 700;   
+  font-family: 'Georgia', serif; 
+}  
+.site-subtitle {   
+  font-size: 1.5rem;   
+  font-weight: 400;   
+  margin-top: 1rem; 
+}  
+.site-title, .site-subtitle {   
+  color: #000000 !important;   
+}   
+
+/* Forcer le texte noir dans la navbar */ 
+#mainNav.navbar-light .navbar-nav .nav-link, 
+#mainNav.navbar-light .navbar-brand {   
+  color: #000000 !important; 
+}  
+/* couleur au survol */ 
+#mainNav.navbar-light .navbar-nav .nav-link:hover {   
+  color: #2ea44f !important;   
+  text-shadow: 0 1px 1px #2f6f53; 
+}  
+.masthead.custom-violet .site-title .site-description, 
+.masthead.custom-violet .site-subtitle, 
+.masthead.custom-violet h1, 
+.masthead.custom-violet p {   
+  color: #000000 !important; 
+}  
+
+/* dernière modif */ 
+.home-hero {   
+  display: flex;   
+  align-items: center;   
+  justify-content: center;   
+  height: 100vh; 
+  
+/* prend toute la hauteur de la fenêtre */   
+  background-color: #ffffff;    
+  text-align: center;   
+  padding: 0 20px; 
+}  
+
+.home-hero .container {   
+  max-width: 800px; 
+}  
+.home-hero .site-title {   
+  font-size: 3rem;   
+  font-weight: bold;   
+  margin-bottom: 10px; 
+}  
+.home-hero .site-subtitle {   
+  font-size: 1.5rem;   
+  margin-bottom: 15px; 
+}  
+.home-hero .site-description {   
+  font-size: 1.2rem;   
+  color: #444; 
+}
+
 /* SECTION home-hero */
 .home-hero {
   display: flex;
