@@ -47,5 +47,27 @@
   color: #000000 !important;
 }
 
+/* dernière modif */
+.home-hero {
+  padding: 80px 0;
+  background-color: #f5f5f5; /* Tu peux changer ou retirer cette couleur */
+}
+
+.home-hero .site-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.home-hero .site-subtitle {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.home-hero .site-description {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  color: #555;
+}
+
 
 
