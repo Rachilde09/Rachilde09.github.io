@@ -145,3 +145,10 @@
   from, to { border-color: transparent }
   50% { border-color: black; }
 }
+#mainNav.navbar-light .navbar-brand {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
