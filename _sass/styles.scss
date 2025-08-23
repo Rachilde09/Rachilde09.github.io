@@ -154,3 +154,23 @@
   50% { border-color: black; }
 }
 
+
+/* Mise en forme des réseaux sociaux */
+.social-links {
+  margin-top: 30px;
+}
+
+.social-links a {
+  font-size: 1.8rem;
+  margin: 0 10px;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
