@@ -53,7 +53,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh; /* prend toute la hauteur de la fenêtre */
-  background-color: #ffffff; /* tu peux changer ça */
+  background-color: #ffffff; 
   text-align: center;
   padding: 0 20px;
 }
@@ -79,4 +79,24 @@
 }
 
 
+/* Effet du titre */
+.site-title {
+  display: inline-block;
+  position: relative;
+}
+
+.site-title::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  bottom: -10px;
+  left: 0;
+  background-color: #000;
+  transition: width 0.5s ease-in-out;
+}
+
+.site-title:hover::after {
+  width: 100%;
+}
 
