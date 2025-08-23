@@ -41,10 +41,12 @@
 }
 
 /* Ecarte la barre de navigation et le logo en les poussant chacun de leur côté */ 
-.navbar {
-  justify-content: space-between !important; /* Écarte les deux blocs */
-  padding: 0 2rem; /* Marge intérieure horizontale */
+#mainNav > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .navbar-brand {
   margin-right: auto;
   font-weight: bold;
