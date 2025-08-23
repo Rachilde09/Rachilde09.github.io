@@ -10,7 +10,11 @@
 
   {{ content }}
 
+  
+  {% unless page.url == "/" %}
   {% include footer.html %}
+{% endunless %}
+
 
   {% include scripts.html %}
 
