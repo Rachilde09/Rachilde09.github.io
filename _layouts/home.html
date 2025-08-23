@@ -2,25 +2,15 @@
 layout: default
 ---
 
-<!-- Page Header -->
-{% if page.background %}
-  <header class="masthead" style="background-image: url('{{ page.background | prepend: site.baseurl | replace: '//', '/' }}')">
-    <div class="container text-center">
-      <h1 class="site-title">Portfolio</h1>
-      <p class="site-subtitle">Bienvenue dans mon univers</p>
-    </div>
-  </header>
-{% else %}
-  <header class="masthead custom-violet">
-    <div class="container text-center">
-      <h1 class="site-title">Portfolio</h1>
-      <p class="site-subtitle">Bienvenue dans mon univers</p>
-      <p class="site-description">Ce portfolio évolue au fil de mes projets : revenez régulièrement pour découvrir les nouveautés.</p>
-    </div>
-  </header>
-{% endif %}
 
-
+<!-- Contenu principal de la page d'accueil -->
+<section class="home-hero text-center">
+  <div class="container">
+    <h1 class="site-title">Portfolio</h1>
+    <p class="site-subtitle">Bienvenue dans mon univers</p>
+    <p class="site-description">Ce portfolio évolue au fil de mes projets : revenez régulièrement pour découvrir les nouveautés.</p>
+  </div>
+</section>
 
 
 
