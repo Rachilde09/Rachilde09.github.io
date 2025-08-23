@@ -14,6 +14,8 @@
   font-size: 5rem;   
   font-weight: 700;   
   font-family: 'Georgia', serif; 
+  animation: typing 2.5s steps(9, end) forwards, blink-caret 0.75s step-end 2s 3;
+
 }  
 .site-subtitle {   
   font-size: 1.5rem;   
@@ -86,37 +88,32 @@
   max-width: 800px;
 }
 
-/* TITRE AVEC EFFET MACHINE À ÉCRIRE */
+
+/* TITRE AVEC TYPEWRITER + GRADIENT */
 .home-hero .site-title {
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
+  font-family: 'Georgia', serif;
+  
+  /* Typewriter setup */
   overflow: hidden;
-  border-right: 0.15em solid #000;
   white-space: nowrap;
-  letter-spacing: 0.1em;
-  animation: typing 2.5s steps(9, end), blink-caret 0.75s step-end infinite;
-}
+  width: 0;
+  border-right: 3px solid #000;
+  animation: typing 2.5s steps(9, end) forwards, blink-caret 0.75s step-end infinite;
 
+  /* Gradient Text */
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 @keyframes typing {
   from { width: 0 }
-  to { width: 100% }
+  to { width: 9ch }  // ← 9 caractères pour "Portfolio"
 }
 
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: black; }
 }
-
-/* Autres styles */
-.home-hero .site-subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.home-hero .site-description {
-  font-size: 1.2rem;
-  color: #444;
-}
-
-
