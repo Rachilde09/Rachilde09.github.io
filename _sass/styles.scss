@@ -63,7 +63,15 @@
 #mainNav.navbar-light .navbar-nav .nav-link:hover::after {
   width: 100%;
 }
- 
+
+/* Dégradé sur le nom (navbar-brand) */
+#mainNav.navbar-light .navbar-brand {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
 .masthead.custom-violet .site-title .site-description, 
 .masthead.custom-violet .site-subtitle, 
 .masthead.custom-violet h1, 
@@ -145,10 +153,4 @@
   from, to { border-color: transparent }
   50% { border-color: black; }
 }
-#mainNav.navbar-light .navbar-brand {
-  background: linear-gradient(90deg, #6a11cb, #2575fc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-  font-size: 1.25rem;
-}
+
