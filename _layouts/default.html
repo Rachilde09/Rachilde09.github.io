@@ -10,10 +10,10 @@
 
   {{ content }}
 
-  <!-- Retire le footer de la page d'accueil -->
-  {% unless page.url == "/" %}
-  {% include footer.html %}
-{% endunless %}
+ <!-- Retire le footer de la page d'accueil ET de la page contact -->
+  {% unless page.url == "/" or page.url == "/contact.html" %}
+    {% include footer.html %}
+  {% endunless %}
 
 
   {% include scripts.html %}
