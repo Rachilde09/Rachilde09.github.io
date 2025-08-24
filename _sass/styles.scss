@@ -50,7 +50,7 @@
   align-items: center;
 }
 .navbar-brand {
-  flex-grow: 10;
+  flex-grow: 1;
   margin-left: 1rem;
   font-weight: bold;
   background: linear-gradient(90deg, #6a11cb, #2575fc); 
@@ -59,7 +59,7 @@
 }
 .navbar-nav {
   flex-grow: 0;
-  margin-right: 0rem;
+  margin-right: -10rem;
   gap: 20px;
 }
 
