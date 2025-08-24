@@ -51,7 +51,7 @@
 }
 .navbar-brand {
   flex-grow: 1;
-  margin-left: -1rem;
+  margin-left: -10rem;
   font-weight: bold;
   background: linear-gradient(90deg, #6a11cb, #2575fc); 
   -webkit-background-clip: text; 
@@ -59,7 +59,7 @@
 }
 .navbar-nav {
   flex-grow: 0;
-  margin-right: -12rem; /* Pousse la barre de navigation vers la droite */ 
+  margin-right: -20rem; /* Pousse la barre de navigation vers la droite */ 
   gap: 20px;
 }
 
