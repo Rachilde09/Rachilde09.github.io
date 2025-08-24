@@ -224,18 +224,11 @@
 .contact-card {
   display: flex;
   align-items: center;
-  background: #2c2c2c; // Gris foncé
-  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #9333ea); // Dégradé bleu-violet
+  border-radius: 10px;
   padding: 20px;
   color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeSlideIn 0.8s ease forwards;
-
-  &:nth-child(2) {
-    animation-delay: 0.2s;
-  }
 
   .icon {
     font-size: 1.8rem;
@@ -249,18 +242,13 @@
       margin: 0 0 10px;
       font-size: 1.2rem;
       font-weight: bold;
-      background: linear-gradient(135deg, #4f46e5, #9333ea); // Dégradé bleu-violet
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #ffd166; // Un orange doux qui ressort bien
     }
 
     p, a {
-      font-size: 1rem;
-      background: linear-gradient(135deg, #4f46e5, #9333ea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #f0f0f0;
       text-decoration: none;
-      font-weight: 500;
+      font-size: 1rem;
 
       &:hover {
         text-decoration: underline;
@@ -272,28 +260,15 @@
       gap: 15px;
 
       a {
-        font-size: 1.6rem;
-        background: linear-gradient(135deg, #4f46e5, #9333ea);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 1.5rem;
+        color: #fff;
         transition: transform 0.2s ease;
 
         &:hover {
           transform: scale(1.2);
+          color: #ffd166; // Hover en orange
         }
       }
     }
-  }
-}
-
-/* Animation */
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
