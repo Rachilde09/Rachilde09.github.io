@@ -42,19 +42,24 @@
 
 /* Ecarte la barre de navigation et le logo en les poussant chacun de leur côté */ 
 #mainNav > .container {
+  max-width: 100%;
+  width: 100%;
   padding-left: 5vw;
   padding-right: 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .navbar-brand {
-  margin-left: 2rem;
+  flex-shrink: 0;
+  margin-left: 0;
 }
 .navbar-nav {
-  margin-right: 2rem;
+  flex-shrink: 0;
+  margin-right: 0;
 }
-@media (min-width: 992px) {
-  .navbar-toggler {
-    display: none;
-  }
+.container {
+  max-width: none;
 }
 
 /* Effet dégradé + texte clipé au survol */
