@@ -213,62 +213,70 @@
 
 
 /* Mise en forme de la page contact */
-.contact-section {
+.contact-wrapper {
   display: flex;
-  flex-direction: column;
   gap: 20px;
-  max-width: 500px;
-  margin: auto;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(135deg, #4f46e5, #9333ea); // Dégradé bleu-violet
-  border-radius: 10px;
-  padding: 20px;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-
-  .icon {
-    font-size: 1.8rem;
-    margin-right: 15px;
+  max-width: 1100px;
+  margin: 50px auto;
+  
+  .contact-card.big {
+    flex: 1;
+    background: #2c2c2c; // gris foncé
+    border-radius: 12px;
+    padding: 30px;
     color: #fff;
-    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
-  .content {
-    h3 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
+  .inner-card {
+    display: flex;
+    align-items: center;
+    background: #1f1f1f;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+
+    .icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+
+    .content h3 {
+      margin: 0 0 5px;
+      font-size: 1.1rem;
       font-weight: bold;
-      color: #ffd166; // Un orange doux qui ressort bien
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    p, a {
-      color: #f0f0f0;
+    a, p {
+      background: linear-gradient(135deg, #4f46e5, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       text-decoration: none;
-      font-size: 1rem;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
+  }
 
-    .social-icons {
-      display: flex;
-      gap: 15px;
+  .image-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-      a {
-        font-size: 1.5rem;
-        color: #fff;
-        transition: transform 0.2s ease;
-
-        &:hover {
-          transform: scale(1.2);
-          color: #ffd166; // Hover en orange
-        }
-      }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
     }
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-wrapper {
+    flex-direction: column;
   }
 }
