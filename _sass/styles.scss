@@ -48,15 +48,21 @@
   padding-right: 5vw;
   display: flex;
   justify-content: space-between;
- 
+  align-items: center;
 }
 .navbar-brand {
   flex-shrink: 0;
-  margin-left: 0;
+  margin-left: auto;
+  font-weight: bold;
+  background: linear-gradient(90deg, #6a11cb, #2575fc); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+
 }
 .navbar-nav {
   flex-shrink: 0;
   margin-right: 0;
+  gap: 20px;
 }
 
 
