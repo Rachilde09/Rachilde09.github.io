@@ -56,11 +56,10 @@
   background: linear-gradient(90deg, #6a11cb, #2575fc); 
   -webkit-background-clip: text; 
   -webkit-text-fill-color: transparent;
-
 }
 .navbar-nav {
   flex-grow: 0;
-  margin-right: 1rem;
+  margin-right: 0rem;
   gap: 20px;
 }
 
