@@ -41,6 +41,15 @@
 }
 
 /* Ecarte la barre de navigation et le logo en les poussant chacun de leur côté */ 
+#mainNav > .container {
+  max-width: 100%;
+  width: 100%;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  display: flex;
+  justify-content: space-between;
+ 
+}
 .navbar-brand {
   flex-shrink: 0;
   margin-left: 0;
