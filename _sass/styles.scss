@@ -43,7 +43,6 @@
 /* Ecarte la barre de navigation et le logo en les poussant chacun de leur côté */ 
 #mainNav > .container {
   max-width: 100%;
-  width: 100%;
   padding-left: 5vw;
   padding-right: 5vw;
   display: flex;
@@ -51,8 +50,8 @@
   align-items: center;
 }
 .navbar-brand {
-  flex-shrink: 0;
-  margin-left: auto;
+  flex-grow: 1;
+  margin-left: 1rem;
   font-weight: bold;
   background: linear-gradient(90deg, #6a11cb, #2575fc); 
   -webkit-background-clip: text; 
@@ -60,8 +59,8 @@
 
 }
 .navbar-nav {
-  flex-shrink: 0;
-  margin-right: 0;
+  flex-grow: 0;
+  margin-right: 1rem;
   gap: 20px;
 }
 
