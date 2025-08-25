@@ -123,6 +123,22 @@ layout: default
   border-radius: 12px;
   object-fit: cover;
 }
+/* Image à même hauteur que la carte gauche */
+.contact-wrapper .image-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* ← s'adapte à la hauteur de la carte texte */
+  overflow: hidden; /* ← évite les débordements éventuels */
+}
+
+.contact-wrapper .image-card img {
+  max-width: 100%;
+  max-height: 100%; /* ← pour forcer à ne pas dépasser */
+  border-radius: 12px;
+  object-fit: cover;
+}
+
 
 /* Responsive */
 @media (max-width: 900px) {
