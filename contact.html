@@ -3,27 +3,17 @@ layout: default
 ---
 
 <style>
-/* Mise en forme de la page contact */
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Centrage vertical du bloc contact */
+/* --- Mise en forme générale de la page contact --- */
 .contact-wrapper {
   display: flex;
   gap: 0;
   max-width: 1100px;
-  margin: auto; /* centre horizontalement */
-  padding: 60px 0; /* espace haut/bas */
+  margin: 0 auto;
+  min-height: 100vh;
+  align-items: center; /* ← centrage vertical */
   position: relative;
-  align-items: flex-start;
 }
 
-/* Ligne verticale dégradée au centre */
 .contact-wrapper::before {
   content: "";
   position: absolute;
@@ -61,9 +51,6 @@ body {
 
 .contact-wrapper .contact-card.big:last-child {
   border-radius: 0 12px 12px 0;
-  /* dépasse vers le haut et le bas */
-  margin-top: -30px;
-  margin-bottom: -30px;
 }
 
 .contact-card .intro {
@@ -71,6 +58,7 @@ body {
   font-size: 1.1rem;
 }
 
+/* --- Détails contact --- */
 .contact-details {
   display: flex;
   flex-direction: column;
@@ -103,36 +91,66 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Lien email en blanc par défaut, dégradé au survol */
+/* Email lien : blanc normal, mais effet vague au survol */
 .contact-item .info a {
   color: white;
   text-decoration: none;
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
-.contact-item .info a:hover {
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.contact-item .info a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(79,70,229,0.2), rgba(147,51,234,0.5));
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  z-index: 0;
 }
 
-/* Icônes sociaux */
+.contact-item .info a:hover::before {
+  left: 100%;
+}
+
+/* --- Icônes sociaux animés --- */
 .social-icons a {
   font-size: 1.3rem;
   margin-right: 12px;
   color: white;
-  transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlide 0.6s ease forwards;
+}
+
+.social-icons a:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.social-icons a:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .social-icons a:hover {
   color: #9333ea;
 }
 
-/* Carte image */
+/* --- Image card avec zoom effet --- */
 .image-card {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -141,13 +159,17 @@ body {
   max-height: 100%;
   border-radius: 12px;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-/* Responsive */
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+/* --- Responsive --- */
 @media (max-width: 900px) {
   .contact-wrapper {
     flex-direction: column;
-    padding: 30px 20px;
   }
 
   .contact-wrapper::before {
@@ -156,16 +178,16 @@ body {
 
   .contact-wrapper .contact-card.big {
     border-radius: 12px;
-    margin: 0;
   }
 }
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- HTML -->
 <div class="contact-wrapper">
 
-  <!-- Carte gauche -->
+  <!-- Carte gauche (texte + contacts) -->
   <div class="contact-card big">
     <h2>Contactez-moi</h2>
     <p class="intro">N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
@@ -178,8 +200,8 @@ body {
         <div class="info">
           <h3>Réseaux sociaux</h3>
           <div class="social-icons">
-            <a href="https://www.linkedin.com/in/nora-angor-rachilde-13a957261/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/Rachilde09" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/tonprofil" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/tonprofil" target="_blank"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>
@@ -189,7 +211,7 @@ body {
         <div class="icon"><i class="fas fa-envelope"></i></div>
         <div class="info">
           <h3>Email</h3>
-          <a href="mailto:rachilde09@gmail.com">rachilde09@gmail.com</a>
+          <a href="mailto:rachilde09@gmail.com"><span>rachilde09@gmail.com</span></a>
         </div>
       </div>
 
@@ -202,6 +224,7 @@ body {
   </div>
 
 </div>
+
 
 
 
