@@ -50,6 +50,9 @@ layout: default
 
 .contact-wrapper .contact-card.big:last-child {
   border-radius: 0 12px 12px 0;
+  /* Fait dépasser la carte image vers le haut et le bas pour équilibrer */
+  margin-top: -30px;
+  margin-bottom: -30px;
 }
 
 .contact-card .intro {
@@ -89,15 +92,10 @@ layout: default
   -webkit-text-fill-color: transparent;
 }
 
+/* Adresse email en blanc */
 .contact-item .info a {
-  color: inherit;
+  color: white;
   text-decoration: none;
-}
-
-.contact-item .info a span {
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Icônes sociaux */
@@ -112,33 +110,20 @@ layout: default
   color: #9333ea;
 }
 
+/* Carte image */
 .image-card {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .image-card img {
   max-width: 100%;
+  max-height: 100%;
   border-radius: 12px;
   object-fit: cover;
 }
-/* Image à même hauteur que la carte gauche */
-.contact-wrapper .image-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%; /* ← s'adapte à la hauteur de la carte texte */
-  overflow: hidden; /* ← évite les débordements éventuels */
-}
-
-.contact-wrapper .image-card img {
-  max-width: 100%;
-  max-height: 100%; /* ← pour forcer à ne pas dépasser */
-  border-radius: 12px;
-  object-fit: cover;
-}
-
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -152,6 +137,8 @@ layout: default
 
   .contact-wrapper .contact-card.big {
     border-radius: 12px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 </style>
@@ -184,7 +171,7 @@ layout: default
         <div class="icon"><i class="fas fa-envelope"></i></div>
         <div class="info">
           <h3>Email</h3>
-          <a href="mailto:rachilde09@gmail.com"><span>rachilde09@gmail.com</span></a>
+          <a href="mailto:rachilde09@gmail.com">rachilde09@gmail.com</a>
         </div>
       </div>
 
@@ -197,4 +184,5 @@ layout: default
   </div>
 
 </div>
+
 
