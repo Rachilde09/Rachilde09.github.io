@@ -15,7 +15,7 @@
 ## 👩‍💻 À propos de moi :
 
 - 🎓 Profil polyvalent : analyse de données, support IT, administration réseau
-- 📊 En ce moment, je développe un **tableau de bord interactif** pour une entreprise de livraison
+- 📊 En ce moment, je développe mes compétences en Collecte, Préparation, Visualisation des données, Assistance technique et Gestion de parc informatique.
 - 🧠 J'apprends **R**, **SQL**, **Data Science** et les outils de reporting
 - 🤝 Ouverte à des projets collaboratifs ou missions en freelance
 
