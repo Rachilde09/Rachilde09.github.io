@@ -4,15 +4,26 @@ layout: default
 
 <style>
 /* Mise en forme de la page contact */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centrage vertical du bloc contact */
 .contact-wrapper {
   display: flex;
   gap: 0;
   max-width: 1100px;
-  margin: 100px auto 50px;
+  margin: auto; /* centre horizontalement */
+  padding: 60px 0; /* espace haut/bas */
   position: relative;
   align-items: flex-start;
 }
 
+/* Ligne verticale dégradée au centre */
 .contact-wrapper::before {
   content: "";
   position: absolute;
@@ -50,7 +61,7 @@ layout: default
 
 .contact-wrapper .contact-card.big:last-child {
   border-radius: 0 12px 12px 0;
-  /* Fait dépasser la carte image vers le haut et le bas pour équilibrer */
+  /* dépasse vers le haut et le bas */
   margin-top: -30px;
   margin-bottom: -30px;
 }
@@ -92,10 +103,17 @@ layout: default
   -webkit-text-fill-color: transparent;
 }
 
-/* Adresse email en blanc */
+/* Lien email en blanc par défaut, dégradé au survol */
 .contact-item .info a {
   color: white;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-item .info a:hover {
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Icônes sociaux */
@@ -129,6 +147,7 @@ layout: default
 @media (max-width: 900px) {
   .contact-wrapper {
     flex-direction: column;
+    padding: 30px 20px;
   }
 
   .contact-wrapper::before {
@@ -137,8 +156,7 @@ layout: default
 
   .contact-wrapper .contact-card.big {
     border-radius: 12px;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0;
   }
 }
 </style>
@@ -147,7 +165,7 @@ layout: default
 
 <div class="contact-wrapper">
 
-  <!-- Carte gauche (textes + contacts) -->
+  <!-- Carte gauche -->
   <div class="contact-card big">
     <h2>Contactez-moi</h2>
     <p class="intro">N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
@@ -184,5 +202,6 @@ layout: default
   </div>
 
 </div>
+
 
 
