@@ -67,37 +67,13 @@ layout: default
 }
 
 .contact-wrapper .inner-card .content h3 {
-  margin: 10px 0 5px;
+  margin: 0 0 5px;
   font-size: 1.1rem;
   font-weight: bold;
   background: linear-gradient(135deg, #4f46e5, #9333ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.row-line {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.row-line .icon {
-  font-size: 1.5rem;
-  color: white;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-}
-
-
-.row-line .content {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-
-
 
 /* Liens et textes — on exclut les icônes pour éviter la transparence */
 .contact-wrapper .inner-card a,
@@ -158,29 +134,27 @@ layout: default
     <h2>Contactez-moi</h2>
     <p>N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
 
-   <!-- Email -->
-<div class="inner-card">
-  <h3>Email</h3> <!-- En dehors de la ligne contenant l'icône -->
-  <div class="row-line">
-    <div class="icon"><i class="fas fa-envelope"></i></div>
-    <div class="content">
-      <a href="mailto:rachilde09@gmail.com"><span>rachilde09@gmail.com</span></a>
+    <!-- Profils sociaux -->
+    <div class="inner-card">
+      <div class="icon"><i class="fas fa-share-alt"></i></div>
+      <div class="content">
+        <h3>Profils sociaux</h3>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/tonprofil" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/tonprofil" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="inner-card">
+      <div class="icon"><i class="fas fa-envelope"></i></div>
+      <div class="content">
+        <h3>Email</h3>
+        <p><a href="mailto:rachilde09@gmail.com"><span>rachilde09@gmail.com</span></a></p>
+      </div>
     </div>
   </div>
-</div>
-
-<!-- Profils sociaux -->
-<div class="inner-card">
-  <h3>Profils sociaux</h3>
-  <div class="row-line">
-    <div class="icon"><i class="fas fa-share-alt"></i></div>
-    <div class="content social-icons">
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-github"></i></a>
-    </div>
-  </div>
-</div>
-
 
   <!-- Grande carte droite (image) -->
   <div class="contact-card big image-card">
@@ -188,4 +162,3 @@ layout: default
   </div>
 
 </div>
-
