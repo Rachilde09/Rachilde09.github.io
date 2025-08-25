@@ -74,6 +74,25 @@ layout: default
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.row-line {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.row-line .icon {
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.row-line .content {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 
 /* Liens et textes — on exclut les icônes pour éviter la transparence */
 .contact-wrapper .inner-card a,
