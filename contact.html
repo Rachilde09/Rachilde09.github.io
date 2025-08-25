@@ -3,42 +3,27 @@ layout: default
 ---
 
 <style>
-/* 🌌 Fond étoilé animé */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(#fff 1px, transparent 1px),
-              radial-gradient(#fff 1px, transparent 1px);
-  background-position: 0 0, 25px 25px;
-  background-size: 50px 50px;
-  animation: twinkle 4s infinite;
-  z-index: -1;
-  opacity: 0.05;
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.05;
-  }
-  50% {
-    opacity: 0.15;
-  }
-}
-
 /* Mise en forme de la page contact */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Centrage vertical du bloc contact */
 .contact-wrapper {
   display: flex;
   gap: 0;
   max-width: 1100px;
-  margin: 10vh auto;
+  margin: auto; /* centre horizontalement */
+  padding: 60px 0; /* espace haut/bas */
   position: relative;
-  align-items: center;
+  align-items: flex-start;
 }
 
+/* Ligne verticale dégradée au centre */
 .contact-wrapper::before {
   content: "";
   position: absolute;
@@ -76,6 +61,9 @@ body::before {
 
 .contact-wrapper .contact-card.big:last-child {
   border-radius: 0 12px 12px 0;
+  /* dépasse vers le haut et le bas */
+  margin-top: -30px;
+  margin-bottom: -30px;
 }
 
 .contact-card .intro {
@@ -115,21 +103,17 @@ body::before {
   -webkit-text-fill-color: transparent;
 }
 
-/* Email en blanc, mais dégradé au hover */
+/* Lien email en blanc par défaut, dégradé au survol */
 .contact-item .info a {
   color: white;
   text-decoration: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-.contact-item .info a:hover span {
+.contact-item .info a:hover {
   background: linear-gradient(135deg, #4f46e5, #9333ea);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.contact-item .info a span {
-  color: white;
 }
 
 /* Icônes sociaux */
@@ -144,16 +128,15 @@ body::before {
   color: #9333ea;
 }
 
-/* Image card */
-.contact-wrapper .image-card {
+/* Carte image */
+.image-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
   overflow: hidden;
 }
 
-.contact-wrapper .image-card img {
+.image-card img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 12px;
@@ -164,7 +147,7 @@ body::before {
 @media (max-width: 900px) {
   .contact-wrapper {
     flex-direction: column;
-    margin: 50px 20px;
+    padding: 30px 20px;
   }
 
   .contact-wrapper::before {
@@ -173,6 +156,7 @@ body::before {
 
   .contact-wrapper .contact-card.big {
     border-radius: 12px;
+    margin: 0;
   }
 }
 </style>
@@ -181,20 +165,21 @@ body::before {
 
 <div class="contact-wrapper">
 
-  <!-- Carte gauche (textes + contacts) -->
+  <!-- Carte gauche -->
   <div class="contact-card big">
     <h2>Contactez-moi</h2>
     <p class="intro">N’hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
 
     <div class="contact-details">
+
       <!-- Réseaux sociaux -->
       <div class="contact-item">
         <div class="icon"><i class="fas fa-share-alt"></i></div>
         <div class="info">
           <h3>Réseaux sociaux</h3>
           <div class="social-icons">
-            <a href="https://www.linkedin.com/in/tonprofil" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/tonprofil" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/nora-angor-rachilde-13a957261/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/Rachilde09" target="_blank"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>
@@ -204,9 +189,10 @@ body::before {
         <div class="icon"><i class="fas fa-envelope"></i></div>
         <div class="info">
           <h3>Email</h3>
-          <a href="mailto:rachilde09@gmail.com"><span>rachilde09@gmail.com</span></a>
+          <a href="mailto:rachilde09@gmail.com">rachilde09@gmail.com</a>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -216,6 +202,7 @@ body::before {
   </div>
 
 </div>
+
 
 
 
