@@ -109,6 +109,32 @@ body {
     border-radius: 12px;
     margin: 0;
   }
+  /* Boutons avec effet clic et hover */
+.cta-button {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #9333ea, #3b82f6);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Effet au survol */
+.cta-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Effet lors du clic */
+.cta-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 }
 </style>
 
@@ -126,8 +152,7 @@ body {
     <p>En parallèle, je continue à enrichir mes acquis en <strong>administration système, assistance technique et gestion de bases de données</strong>, pour offrir un profil polyvalent et adapté aux besoins actuels.</p>
 
     <!-- Bouton pour afficher la version complète -->
-    <button onclick="document.getElementById('about-full').style.display='block'; this.style.display='none';" 
-            style="margin-top:15px; padding:10px 20px; border:none; background:linear-gradient(135deg, #9333ea, #3b82f6); color:#fff; border-radius:8px; cursor:pointer;">
+    <button class="cta-button" onclick="document.getElementById('about-full').style.display='block'; this.style.display='none';">
       Lire plus
     </button>
 
@@ -137,12 +162,10 @@ body {
       
       <!-- Deux boutons alignés -->
       <div style="display:flex; gap:15px; margin-top:20px;">
-        <a href="Projets/index.html" 
-          style="flex:1; text-align:center; padding:10px 20px; text-decoration:none; background:#5c4ee5; color:#fff; border-radius:8px; cursor:pointer;">
+        <a href="Projets/index.html" class="cta-button">
           Voir mes projets
         </a>
-        <a href="contact.html" 
-          style="flex:1; text-align:center; padding:10px 20px; text-decoration:none; background:#5c4ee5; color:#fff; border-radius:8px; cursor:pointer;">
+        <a href="contact.html" class="cta-button">
           Me contacter
         </a>
       </div>
