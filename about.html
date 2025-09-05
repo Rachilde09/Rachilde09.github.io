@@ -1,12 +1,113 @@
 ---
-layout: page
-title: About Me
-description: This is what I do.
-background: '/img/bg-about.jpg'
+layout: default
+title: Qui suis-je?
 ---
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed quisquam ut perspiciatis, repudiandae nulla animi iste vel, praesentium repellendus molestias aliquid consequatur, earum rem qui error voluptates eius enim consequuntur!</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex alias, earum consectetur quia natus ducimus voluptate explicabo, hic porro reprehenderit, quasi? Tenetur ipsum distinctio laboriosam perspiciatis officiis dolore, architecto id.</p>
+<style>
+/* Mise en page commune */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-<p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam inventore aspernatur repellendus incidunt adipisci modi voluptates recusandae iste eligendi, repudiandae corporis quod aut, optio! Explicabo quaerat unde voluptatem! Itaque, eum!</p>
+.page-wrapper {
+  display: flex;
+  gap: 0;
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 0;
+  position: relative;
+  align-items: flex-start;
+}
+
+.page-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #4f46e5,
+    #4f46e5 10px,
+    #9333ea 10px,
+    #9333ea 20px
+  );
+  border-radius: 3px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.page-card {
+  flex: 1;
+  background: #2c2c2c;
+  border-radius: 0;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.page-card:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.page-card:last-child {
+  border-radius: 0 12px 12px 0;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+.page-card h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-card p {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Carte image */
+.image-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page-wrapper {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .page-wrapper::before {
+    display: none;
+  }
+
+  .page-card {
+    border-radius: 12px;
+    margin: 0;
+  }
+}
+</style>
