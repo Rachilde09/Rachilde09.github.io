@@ -64,7 +64,7 @@ body {
   border-radius: 0 12px 12px 0;
   /* Côté droit dépasse vers le haut */
   margin-top: -30px;
-  margin-bottom: -30px; /* <-- augmenté pour dépasser aussi en bas */
+  margin-bottom: -20px; /* <-- augmenté pour dépasser aussi en bas */
 }
 
 .contact-card .intro {
@@ -134,8 +134,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible; /* ← autorise le dépassement */
-}
+  overflow: hidden; 
 
 .image-card img {
   max-width: 100%;
@@ -146,9 +145,9 @@ body {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .contact-wrapper .contact-card.big:last-child {
-    margin-top: -20px;
-    margin-bottom: -20px;
+  .contact-wrapper {
+    flex-direction: column;
+    padding: 30px 20px;
   }
 }
 
@@ -160,9 +159,7 @@ body {
     border-radius: 12px;
     margin: 0;
   }
- .contact-card.big.image-card {
-  border: 2px dashed red;
-} 
+
 }
 </style>
 
