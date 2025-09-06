@@ -3,23 +3,25 @@ layout: default
 title: Projets
 ---
 
-<style>
+  <style>
   body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #1e1e1e;
-    color: white;
+    background: white; /* <-- Blanc au lieu de noir */
+    color: black; /* Texte par défaut noir */
   }
 
   .projects-container {
     max-width: 1100px;
     margin: 80px auto;
     padding: 40px;
-    background: #2c2c2c;
+    background: #2c2c2c; /* Le cadre uniquement reste noir */
+    color: white; /* Texte à l'intérieur du cadre */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
+
 
   .project-filters {
     display: flex;
