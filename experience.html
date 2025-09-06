@@ -1,1 +1,186 @@
+---
+layout: default
+title: Expérience
+---
+
+<style>
+/* Mise en page */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-wrapper {
+  display: flex;
+  gap: 0;
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 0;
+  position: relative;
+  align-items: flex-start;
+}
+
+.page-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #4f46e5,
+    #4f46e5 10px,
+    #9333ea 10px,
+    #9333ea 20px
+  );
+  border-radius: 3px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.page-card {
+  flex: 1;
+  background: #2c2c2c;
+  border-radius: 0;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.page-card:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.page-card:last-child {
+  border-radius: 0 12px 12px 0;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+.page-card h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-card h3 {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #93c5fd;
+}
+
+.page-card p {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+ul.experience-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.experience-list li {
+  margin-bottom: 20px;
+  padding-left: 20px;
+  position: relative;
+}
+
+ul.experience-list li::before {
+  content: "•";
+  color: #9333ea;
+  position: absolute;
+  left: 0;
+  font-size: 1.5rem;
+  top: -2px;
+}
+
+/* Carte image */
+.image-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .page-wrapper {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .page-wrapper::before {
+    display: none;
+  }
+
+  .page-card {
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .page-card:last-child {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+}
+</style>
+
+<div class="page-wrapper" style="margin-top:80px;">
+
+  <!-- Colonne gauche -->
+  <div class="page-card">
+    <h2>Mon parcours pratique</h2>
+
+    <h3>📊 Projets personnels et formations</h3>
+    <ul class="experience-list">
+      <li>
+        <strong>Certification Google Data Analytics</strong><br>
+        <em>Juin 2025</em><br>
+        Projet final : analyse de données clients pour une boutique fictive.  
+        <br><strong>Outils :</strong> Sheets, SQL, Tableau
+      </li>
+      <li>
+        <strong>Participation à la compétition DataTour</strong><br>
+        <em>Août - Septembre 2025</em><br>
+        Compétition en science des données (en cours) — exploration et modélisation sur données réelles.
+      </li>
+    </ul>
+
+    <h3>💼 Compétences développées</h3>
+    <ul class="experience-list">
+      <li>Autonomie et discipline dans la gestion de projet</li>
+      <li>Analyse de données, visualisation et storytelling</li>
+      <li>Curiosité et apprentissage continu</li>
+      <li>Communication écrite structurée (documentation, rapports)</li>
+    </ul>
+
+    <h3>🚀 Objectif</h3>
+    <p>
+      Je suis activement à la recherche d’une première opportunité pour mettre mes compétences en pratique dans un cadre professionnel stimulant.  
+      Mon objectif : contribuer à des projets concrets tout en continuant à apprendre au sein d’une équipe.
+    </p>
+  </div>
+
+  <!-- Colonne droite (image) -->
+  <div class="page-card image-card">
+    <img src="/img/bg-experience.jpg" alt="Illustration expérience">
+  </div>
+</div>
 
