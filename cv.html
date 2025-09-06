@@ -8,45 +8,35 @@ title: "CV"
     margin: 0;
     padding: 0;
     background: #ffffff;
-    color: #333;
     font-family: 'Segoe UI', sans-serif;
   }
 
-  .cv-container {
+  .cv-wrapper {
     max-width: 1100px;
     margin: 80px auto;
-    padding: 40px;
+    padding: 20px;
     background: #2c2c2c;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-    color: #fff;
+    color: white;
     position: relative;
   }
 
   .cv-header {
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
 
   .cv-header h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     background: linear-gradient(135deg, #9333ea, #3b82f6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-  }
-
-  .cv-header p {
-    font-size: 1.1rem;
-    color: #ccc;
   }
 
   .download-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
     padding: 10px 20px;
     background: linear-gradient(135deg, #9333ea, #3b82f6);
     color: white;
@@ -65,119 +55,39 @@ title: "CV"
     color: white;
   }
 
-  .cv-section {
-    margin-bottom: 40px;
-  }
-
-  .cv-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    border-bottom: 2px solid #555;
-    padding-bottom: 5px;
-  }
-
-  .cv-item {
-    margin-bottom: 20px;
-  }
-
-  .cv-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-    background: linear-gradient(135deg, #9333ea, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .cv-item span {
-    font-size: 0.95rem;
-    color: #aaa;
-  }
-
-  .cv-item p {
-    font-size: 1rem;
-    color: #ddd;
-  }
-
-  .cv-link {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-  }
-
-  .cv-link:hover {
-    background: linear-gradient(135deg, #9333ea, #3b82f6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: underline;
+  .cv-pdf {
+    width: 100%;
+    height: 1000px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   @media (max-width: 768px) {
-    .cv-container {
-      padding: 20px;
+    .cv-pdf {
+      height: 600px;
+    }
+
+    .cv-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
     }
 
     .download-btn {
-      position: static;
-      display: block;
       width: fit-content;
-      margin: 20px auto 0;
     }
   }
 </style>
 
-<div class="cv-container">
+<div class="cv-wrapper">
   <div class="cv-header">
-    <h1>Mon CV</h1>
-    <p>Compétences, formations, projets et plus</p>
-
-    <!-- Bouton Télécharger -->
-    <a class="download-btn" href="/assets/cv_rachilde.pdf" target="_blank" download>Télécharger le CV</a>
+    <h1>Mon CV (PDF)</h1>
+    <a class="download-btn" href="/assets/ANGOR_CV.pdf" target="_blank" download>Télécharger le CV</a>
   </div>
 
-  <div class="cv-section">
-    <h2>🎓 Formations</h2>
-    <div class="cv-item">
-      <h3>Certification Data Scientist Bootcamp</h3>
-      <span>Février - Juin 2025</span>
-      <p>Formation intensive en data science. Projet final : <a href="https://github.com/Rachilde09/Analyseur_cv" class="cv-link" target="_blank">Analyseur_cv</a>.</p>
-    </div>
-    <div class="cv-item">
-      <h3>Master Télécommunications & Réseaux</h3>
-      <span>Université de ... – Date</span>
-      <p>Spécialisation en infrastructure réseau, sécurité, et systèmes distribués.</p>
-    </div>
-  </div>
-
-  <div class="cv-section">
-    <h2>🧠 Compétences techniques</h2>
-    <div class="cv-item">
-      <p><strong>Langages :</strong> Python, SQL, Bash</p>
-      <p><strong>Data :</strong> Pandas, NumPy, Matplotlib, Scikit-learn</p>
-      <p><strong>Dev :</strong> Git/GitHub, Streamlit, VSCode, PyCharm</p>
-      <p><strong>Autres :</strong> Linux, PostgreSQL, assistance technique</p>
-    </div>
-  </div>
-
-  <div class="cv-section">
-    <h2>📊 Projets</h2>
-    <div class="cv-item">
-      <h3>Analyseur_cv</h3>
-      <p>Application Streamlit permettant de scanner un CV et d’extraire les compétences clés.</p>
-      <p><a href="https://github.com/Rachilde09/Analyseur_cv" class="cv-link" target="_blank">Voir sur GitHub</a></p>
-    </div>
-    <div class="cv-item">
-      <h3>Portfolio Web</h3>
-      <p>Site web personnel pour présenter mon profil, mes projets et mon parcours.</p>
-      <p><a href="https://github.com/Rachilde09/portfolio" class="cv-link" target="_blank">Voir sur GitHub</a></p>
-    </div>
-  </div>
-
-  <div class="cv-section">
-    <h2>📞 Contact</h2>
-    <p>Email : <a href="mailto:rachilde09@gmail.com" class="cv-link">rachilde09@gmail.com</a></p>
-    <p>LinkedIn : <a href="https://linkedin.com/in/nora-angor-rachilde-13a957261" class="cv-link" target="_blank">Voir mon profil</a></p>
-    <p>GitHub : <a href="https://github.com/Rachilde09" class="cv-link" target="_blank">Rachilde09</a></p>
-  </div>
+  <!-- Affichage du PDF -->
+  <iframe class="cv-pdf" src="/assets/ANGOR_CV.pdf"></iframe>
 </div>
+
 
