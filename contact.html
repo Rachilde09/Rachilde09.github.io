@@ -134,7 +134,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; 
+  overflow: visible; /* ← autorise le dépassement */
 }
 
 .image-card img {
@@ -146,10 +146,11 @@ body {
 
 /* Responsive */
 @media (max-width: 900px) {
-  .contact-wrapper {
-    flex-direction: column;
-    padding: 30px 20px;
+  .contact-wrapper .contact-card.big:last-child {
+    margin-top: -20px;
+    margin-bottom: -20px;
   }
+}
 
   .contact-wrapper::before {
     display: none;
@@ -159,6 +160,9 @@ body {
     border-radius: 12px;
     margin: 0;
   }
+ .contact-card.big.image-card {
+  border: 2px dashed red;
+} 
 }
 </style>
 
