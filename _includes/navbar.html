@@ -1,4 +1,36 @@
 <!-- Navigation -->
+<style>
+  /* Navbar fixe et stylée */
+  #mainNav {
+    background: linear-gradient(135deg, #9333ea, #3b82f6) !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px 30px;
+    z-index: 1000;
+  }
+
+  #mainNav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  #mainNav .nav-link:hover {
+    color: #e0e0ff !important;
+    text-decoration: underline;
+  }
+
+  #mainNav .navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  /* Pour éviter que le contenu passe sous la navbar */
+  body {
+    padding-top: 80px;
+  }
+</style>
+
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
