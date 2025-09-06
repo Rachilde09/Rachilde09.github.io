@@ -1,47 +1,165 @@
-layout: page
-title: projets
-background: '/img/bg-post.jpg'
+---
+layout: default
+title: Projets
 ---
 
-{% for post in paginator.posts %}
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #1e1e1e;
+    color: white;
+  }
 
-<article class="post-preview">
-  <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
-    <h2 class="post-title">{{ post.title }}</h2>
-    {% if post.subtitle %}
-    <h3 class="post-subtitle">{{ post.subtitle }}</h3>
-    {% else %}
-    <h3 class="post-subtitle">{{ post.excerpt | strip_html | truncatewords: 15 }}</h3>
-    {% endif %}
-  </a>
-  <p class="post-meta">Posted by
-    {% if post.author %}
-    {{ post.author }}
-    {% else %}
-    {{ site.author }}
-    {% endif %}
-    on {{ post.date | date: '%B %d, %Y' }} &middot; {% include read_time.html content=post.content %}
-  </p>
-</article>
+  .projects-container {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 40px;
+    background: #2c2c2c;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
 
-<hr>
+  .project-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
 
-{% endfor %}
+  .filter-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #9333ea, #3b82f6);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
+  .filter-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
 
-<div class="clearfix">
+  .filter-button.active {
+    box-shadow: 0 0 0 3px #9333ea inset;
+  }
 
-  {% if paginator.previous_page %}
-  <a class="btn btn-primary float-left" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr;
-    Newer<span class="d-none d-md-inline"> Posts</span></a>
-  {% endif %}
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+  }
 
-  {% if paginator.next_page %}
-  <a class="btn btn-primary float-right" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older<span class="d-none d-md-inline"> Posts</span> &rarr;</a>
-  {% endif %}
+  .project-item {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+  }
 
+  .project-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .project-title {
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @media (max-width: 600px) {
+    .filter-button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+
+    .project-title {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<div class="projects-container">
+
+  <!-- Menu de filtre -->
+  <div class="project-filters">
+    <button class="filter-button active" data-filter="all">Tous</button>
+    <button class="filter-button" data-filter="data">Analyse de données</button>
+    <button class="filter-button" data-filter="other">Autres</button>
+  </div>
+
+  <!-- Galerie de projets -->
+  <div class="project-gallery">
+
+    <!-- Projet 1 - Analyse de données -->
+    <div class="project-item" data-category="data">
+      <a href="https://github.com/Rachilde09/Analyseur_cv" target="_blank">
+        <img src="/img/analyse_cv.jpg" alt="Analyseur CV">
+        <div class="project-title">Analyseur de CV</div>
+      </a>
+    </div>
+
+    <!-- Projet 2 - Autres -->
+    <div class="project-item" data-category="other">
+      <a href="https://github.com/Rachilde09/site-vitrine" target="_blank">
+        <img src="/img/site-vitrine.jpg" alt="Site vitrine">
+        <div class="project-title">Site Vitrine HTML/CSS</div>
+      </a>
+    </div>
+
+    <!-- Projet 3 - Analyse de données -->
+    <div class="project-item" data-category="data">
+      <a href="#" target="_blank">
+        <img src="/img/dataviz.jpg" alt="Dataviz projet">
+        <div class="project-title">Dataviz Sénégal</div>
+      </a>
+    </div>
+
+    <!-- Projet 4 - Autres -->
+    <div class="project-item" data-category="other">
+      <a href="#" target="_blank">
+        <img src="/img/portfolio.jpg" alt="Portfolio">
+        <div class="project-title">Mon Portfolio</div>
+      </a>
+    </div>
+
+  </div>
 </div>
 
-{% endif %}
+<script>
+  const buttons = document.querySelectorAll('.filter-button');
+  const items = document.querySelectorAll('.project-item');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+
+      // Active button styling
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
