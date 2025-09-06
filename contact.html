@@ -62,9 +62,9 @@ body {
 
 .contact-wrapper .contact-card.big:last-child {
   border-radius: 0 12px 12px 0;
-  /* Côté droit dépasse vers le haut et le bas */
-  transform: translateY(-30px); /* décalage vers le haut ET visuel de dépassement bas aussi */
-  height: calc(100% + 60px);    /* allonge la carte pour qu’elle déborde aussi vers le bas */
+  /* Côté droit dépasse vers le haut */
+  margin-top: -30px;
+  margin-bottom: -30px; /* <-- augmenté pour dépasser aussi en bas */
 }
 
 .contact-card .intro {
