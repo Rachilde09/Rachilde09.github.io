@@ -1,1 +1,198 @@
+---
+layout: default
+title: Éducation
+---
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.education-wrapper {
+  display: flex;
+  gap: 0;
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 0;
+  position: relative;
+  align-items: flex-start;
+}
+
+.education-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 6px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #4f46e5,
+    #4f46e5 10px,
+    #9333ea 10px,
+    #9333ea 20px
+  );
+  border-radius: 3px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.education-card {
+  flex: 1;
+  background: #2c2c2c;
+  border-radius: 0;
+  padding: 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.education-card:first-child {
+  border-radius: 12px 0 0 12px;
+}
+
+.education-card:last-child {
+  border-radius: 0 12px 12px 0;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+.education-card h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Formation / Certification block */
+.edu-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 25px;
+  border-left: 4px solid #9333ea;
+}
+
+.edu-item::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+}
+
+.edu-item h3 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.edu-item .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #9333ea, #4f46e5);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.edu-item p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Image column */
+.image-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image-card img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .education-wrapper {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .education-wrapper::before {
+    display: none;
+  }
+
+  .education-card {
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .education-card:last-child {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+}
+</style>
+
+<div class="education-wrapper" style="margin-top:80px;">
+
+  <!-- Colonne gauche : Éducation -->
+  <div class="education-card">
+    <h2>Parcours éducatif</h2>
+
+    <div class="edu-item">
+      <div class="badge">Formation</div>
+      <h3>Master en Télécommunications et Réseaux</h3>
+      <p>Université XYZ, 2019 - 2021</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="badge">Formation</div>
+      <h3>Licence en Informatique</h3>
+      <p>Université ABC, 2016 - 2019</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="badge">Certification</div>
+      <h3>Data Science with Python</h3>
+      <p>IBM / Coursera, 2023</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="badge">Certification</div>
+      <h3>Administration Linux</h3>
+      <p>OpenClassrooms, 2022</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="badge">Certification</div>
+      <h3>Power BI et Visualisation de données</h3>
+      <p>Udemy, 2024</p>
+    </div>
+
+  </div>
+
+  <!-- Colonne droite : Image -->
+  <div class="education-card image-card">
+    <img src="/img/education.jpg" alt="Image éducation">
+  </div>
+
+</div>
 
