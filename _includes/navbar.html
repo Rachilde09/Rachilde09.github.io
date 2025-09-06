@@ -1,39 +1,49 @@
-<!-- Navigation -->
 <style>
-  :root {
-    --navbar-height: 70px;
-  }
+:root {
+  --navbar-height: 70px;
+}
 
-  body {
-    margin: 0;
-    padding-top: var(--navbar-height);
-  }
+/* Ajoute de l’espace en haut du body pour éviter que le contenu soit caché sous la navbar */
+body {
+  margin: 0;
+  padding-top: var(--navbar-height); /* Compense la navbar fixe */
+}
 
-  #mainNav {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100%;
-    height: var(--navbar-height);
-    background: linear-gradient(135deg, #9333ea, #3b82f6) !important;
-    z-index: 2000 !important;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
+/* NAVBAR FIXE EN HAUT */
+#mainNav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--navbar-height);
+  background: linear-gradient(135deg, #9333ea, #3b82f6) !important;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
 
-  #mainNav .navbar-brand,
-  #mainNav .nav-link {
-    color: white !important;
-  }
+/* Style du texte */
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+  color: white !important;
+  font-weight: 500;
+}
 
-  #mainNav .nav-link:hover {
-    color: #e0e0ff !important;
-    text-decoration: underline;
-  }
+#mainNav .nav-link:hover {
+  color: #e0e0ff !important;
+  text-decoration: underline;
+}
+
+/* Empêche tout script JS de cacher ou animer la navbar */
+.affix,
+.navbar-shrink {
+  position: fixed !important;
+  top: 0 !important;
+}
 </style>
 
-
-
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<!-- NAVIGATION FIXE -->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
   <div class="container">
     <a class="navbar-brand" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -44,28 +54,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/" | relative_url }}">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/about" | relative_url }}">À propos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/projets" | relative_url }}">Projets</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/education" | relative_url }}">Éducation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/experience" | relative_url }}">Expérience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/cv" | relative_url }}">CV</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ "/contact" | relative_url }}">Contact</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/" | relative_url }}">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/about" | relative_url }}">À propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/projets" | relative_url }}">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/education" | relative_url }}">Éducation</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/experience" | relative_url }}">Expérience</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/cv" | relative_url }}">CV</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/contact" | relative_url }}">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
+
