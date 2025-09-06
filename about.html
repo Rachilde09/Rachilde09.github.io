@@ -5,7 +5,7 @@ title: "A propos"
 
 
 <style>
-/* Mise en page commune */
+  /* Mise en page commune */
 body {
   margin: 0;
   padding: 0;
@@ -94,22 +94,7 @@ body {
   object-fit: cover;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .page-wrapper {
-    flex-direction: column;
-    padding: 30px 20px;
-  }
-
-  .page-wrapper::before {
-    display: none;
-  }
-
-  .page-card {
-    border-radius: 12px;
-    margin: 0;
-  }
-  /* Boutons avec effet clic et hover */
+/* Boutons avec effet clic et hover */
 .cta-button {
   display: inline-block;
   text-align: center;
@@ -136,8 +121,28 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* Responsive */
+@media (max-width: 900px) {
+  .page-wrapper {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
 
+  .page-wrapper::before {
+    display: none;
+  }
+
+  .page-card {
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .page-card:last-child {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
 }
+
 </style>
 
 <div class="page-wrapper" style="margin-top:80px;"> <!-- ajout d’un margin-top -->
@@ -146,7 +151,6 @@ body {
   <div class="page-card">
     <h2>Qui suis-je?</h2>
 
-    <!-- Version courte -->
     <p>Ma passion pour l’informatique est née très tôt, à une époque où l’accès à Internet relevait encore du luxe. De mes premiers pas en bureautique à un master en Télécommunications et Réseaux, j’ai toujours cherché à approfondir mes connaissances.</p>
 
     <p>Face à la rareté des opportunités dans mon domaine initial, j’ai choisi de me spécialiser en <strong>science des données</strong>, un secteur en pleine expansion en Afrique. J’y développe des compétences clés : collecte, nettoyage, analyse, visualisation et modélisation de données.</p>
@@ -154,12 +158,11 @@ body {
     <p>En parallèle, je continue à enrichir mes acquis en <strong>administration système, assistance technique et gestion de bases de données</strong>, pour offrir un profil polyvalent et adapté aux besoins actuels.</p>
 
     <p>Vous pouvez découvrir une partie de mes réalisations dans la section <strong>Projets</strong>, ou me contacter directement via la page <strong>Contact</strong>.</p>
-      
-      <!-- Deux boutons alignés -->
-      <div style="display:flex; gap:15px; margin-top:20px;">
-    <a href="Projets/index.html" class="cta-button" style="flex:1;">Voir mes projets</a>
-    <a href="contact.html" class="cta-button" style="flex:1;">Me contacter</a>
-  </div>
+
+    <!-- Deux boutons alignés -->
+    <div style="display:flex; gap:15px; margin-top:20px;">
+      <a href="Projets/index.html" class="cta-button" style="flex:1;">Voir mes projets</a>
+      <a href="contact.html" class="cta-button" style="flex:1;">Me contacter</a>
     </div>
   </div>
 
@@ -167,5 +170,5 @@ body {
   <div class="page-card image-card">
     <img src="/img/apropos.jpg" alt="Mon image de test">
   </div>
-  </div>
 
+</div>
