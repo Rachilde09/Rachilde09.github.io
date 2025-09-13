@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extraction IMDb Top 250</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        color: #333;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    section {
+        background: #fff;
+        padding: 20px 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    ul {
+        margin: 10px 0 10px 20px;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    .highlight-box {
+        background-color: #e8f0fe;
+        border-left: 5px solid #4285f4;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+    .download-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #4285f4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+    .download-btn:hover {
+        background-color: #2a65c7;
+    }
+</style>
+</head>
+<body>
+
+<h1>Extraction des 250 meilleurs films IMDb</h1>
+
+<section>
+<h2>1. Introduction / Objectif</h2>
+<p>Dans ce projet, l’objectif est d’extraire les informations relatives aux <strong>250 films les mieux notés sur IMDb</strong> à l’aide de Python et de bibliothèques spécialisées en web scraping.</p>
+<p>Cette extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p>
+<p><em>Note :</em> Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement à des fins éducatives. Le script complet n’est pas publié afin de respecter les conditions d’utilisation.</p>
+<p>Pour accéder à la version complète du script, vous pouvez me contacter.</p>
+</section>
+
+<section>
+<h2>2. Environnement et bibliothèques utilisées</h2>
+<ul>
+<li><strong>Requests :</strong> pour envoyer des requêtes HTTP et récupérer le contenu des pages web.</li>
+<li><strong>BeautifulSoup (bs4) :</strong> pour parser le code HTML et extraire les données.</li>
+<li><strong>Pandas :</strong> pour organiser, structurer et manipuler les données extraites.</li>
+</ul>
+</section>
+
+<section>
+<h2>3. Envoi de la requête HTTP</h2>
+<p>La première étape consiste à envoyer une requête vers l’URL du classement IMDb Top 250.</p>
+<p>IMDb bloque les requêtes automatiques sans <strong>User-Agent</strong> et renvoie une erreur 403. La solution consiste à ajouter un en-tête <strong>User-Agent</strong> afin de simuler un navigateur réel.</p>
+</section>
+
+<section>
+<h2>4. Navigation dans le HTML</h2>
+<p>Avant d’extraire les données, il est essentiel d’inspecter la structure HTML de la page.</p>
+<p>En ouvrant la page IMDb Top 250 Films dans un navigateur et en utilisant l’outil Inspecter, on identifie les balises et classes CSS contenant les informations recherchées (titres, notes, liens…).</p>
+</section>
+
+<section>
+<h2>5. Extraction avec BeautifulSoup</h2>
+<p>Nous avons utilisé la méthode <strong>select()</strong> avec des sélecteurs CSS pour cibler les éléments pertinents, et <strong>find_next()</strong> pour récupérer les balises voisines comme l’année ou la note.</p>
+<ul>
+<li><code>soup.select("li a[href^='/title/']")</code> → cible tous les films de la liste.</li>
+<li><code>item.find_next("span")</code> → récupère l’année ou d’autres informations situées juste après le titre.</li>
+<li><code>item.find_next("span", class_="ipc-rating-star__rating")</code> → extrait la note IMDb.</li>
+</ul>
+<p><em>Le script complet n’est pas publié afin de respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée est présentée pour illustrer la méthodologie.</em></p>
+</section>
+
+<section>
+<h2>6. Structuration des données</h2>
+<p>Les données extraites sont stockées dans un <strong>DataFrame Pandas</strong> pour faciliter la manipulation et la vérification de leur qualité.</p>
+</section>
+
+<section>
+<h2>7. Exportation des données (optionnel)</h2>
+<p>Pour réutiliser les données plus tard, elles peuvent être exportées vers un fichier CSV :</p>
+<a href="imdb_top250.csv" class="download-btn" download>Télécharger le CSV extrait</a>
+<p><em>Note : Seule une partie du CSV est disponible pour respecter les règles d’IMDb.</em></p>
+</section>
+
+<section>
+<h2>8. Conclusion</h2>
+<p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
+</section>
+
+<section class="highlight-box">
+<h2>📌 Points clés à retenir</h2>
+<ul>
+<li><strong>Classement IMDb (Rank) :</strong> correspond à la position officielle d’un film dans le Top 250. Exemple : Rank 1 → The Shawshank Redemption, Rank 2 → The Godfather, Rank 3 → The Dark Knight.</li>
+<li><strong>Importance de l’encodage UTF-8 :</strong> garantit la conservation correcte de tous les caractères spéciaux et symboles non latins dans le CSV (ex. Alejandro González Iñárritu).</li>
+<li><strong>Chargement partiel des films :</strong> IMDb ne place pas les 250 films dans une seule page statique. Requests + BeautifulSoup récupèrent seulement les films présents dans le HTML initial (souvent 25 premiers films). Pour récupérer tous les films, il faut combiner parsing HTML + JSON généré dynamiquement.</li>
+<li><strong>Réalité du web scraping :</strong> la structure HTML d’IMDb change régulièrement. Un script fonctionnel aujourd’hui peut cesser de fonctionner demain.</li>
+</ul>
+<p>L’analyse complète est disponible dans l’onglet <strong>Analyse</strong> de mon portfolio.</p>
+</section>
+
+</body>
+</html>
 
