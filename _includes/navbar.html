@@ -48,9 +48,13 @@ body {
 
 #mainNav .navbar-nav {
   display: flex;
-  flex-wrap: wrap;           /* autorise un retour à la ligne */
-  justify-content: flex-end; /* colle les liens à droite */
-  width: 100%;               /* prend toute la largeur */
+  flex-wrap: nowrap;       /* une seule ligne */
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#mainNav .nav-item {
+  margin-left: 0.8rem;     /* espace entre les liens (ajuste si besoin) */
 }
 
 
