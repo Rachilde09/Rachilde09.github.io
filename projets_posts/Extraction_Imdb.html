@@ -153,7 +153,12 @@ img.zoomable:hover {
   z-index: 10;
   position: relative;
 }
-
+/* Empêche tout script JS de cacher ou animer la navbar */
+.affix,
+.navbar-shrink {
+  position: fixed !important;
+  top: 0 !important;
+}
 </style>
 
 </head>
