@@ -108,20 +108,20 @@
   }
   .footer-btns { display: flex; flex-direction: column; gap: 10px; }
 
-  /* aside flottant complètement à droite */
-  aside {
+  /* aside complètement à droite */
+ aside {
   position: fixed;
-  top: 0;
+  top: 20px;
   right: 0;
   width: 300px;
-  height: auto;      /* s’adapte au contenu */
-  max-height: 90vh;  /* optionnel : ne dépasse pas presque toute la fenêtre */
+  height: 300px;      /* hauteur fixe */
   padding: 20px;
-  overflow-y: auto;  /* scroll si contenu dépasse max-height */
+  overflow-y: auto;
   box-shadow: -4px 0 12px rgba(0,0,0,0.1);
   z-index: 100;
   background: var(--bg);
 }
+
 
   aside .card {
     padding: 16px;
@@ -175,11 +175,17 @@
             <h2>3. Envoi de la requête HTTP</h2>
             <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
 <div style="display:flex; gap:10px; flex-wrap:wrap;">
+  <a href="/img/projet2/Images1.jpeg" target="_blank">
   <img src="/img/projet2/Images1.jpeg" alt="Image 1">
-  <p></p>
-  <br><img src="/img/projet2/image2.jpeg" alt="Image 2">
-  <p></p>
+</a>
+  <br>
+<a href="/img/projet2/image2.jpeg" target="_blank">
+  <img src="/img/projet2/image2.jpeg" alt="Image 2">
+</a>
+  <br>
+<a href="/img/projet2/Images3.jpeg" target="_blank">
   <br><img src="/img/projet2/Images3.jpeg" alt="Image 3">
+</a>
 </div>
 
           </section>
