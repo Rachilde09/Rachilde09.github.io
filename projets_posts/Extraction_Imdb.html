@@ -1,133 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Extraction IMDb Top 250</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 20px;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Extraction IMDb Top 250 — Projet</title>
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --muted:#6b6f76; --accent:#0b5fff; --frame:#eef3ff;
+      --max-width:1000px;
     }
-    h1, h2 {
-        color: #333;
-    }
-    h1 {
-        text-align: center;
-        margin-bottom: 40px;
-    }
-    section {
-        background: #fff;
-        padding: 20px 30px;
-        margin-bottom: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    ul {
-        margin: 10px 0 10px 20px;
-    }
-    li {
-        margin-bottom: 5px;
-    }
-    .highlight-box {
-        background-color: #e8f0fe;
-        border-left: 5px solid #4285f4;
-        padding: 15px 20px;
-        border-radius: 8px;
-        margin-top: 20px;
-    }
-    .download-btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background-color: #4285f4;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background 0.3s;
-    }
-    .download-btn:hover {
-        background-color: #2a65c7;
-    }
-</style>
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial, "Helvetica Neue", sans-serif; margin:0; background:var(--bg); color:#111}
+    .container{max-width:var(--max-width); margin:32px auto; padding:24px}
+    header{display:flex; align-items:center; gap:16px}
+    header h1{font-size:20px; margin:0}
+    .meta{color:var(--muted); font-size:14px}
+
+    .card{background:var(--card); border-radius:12px; padding:20px; box-shadow:0 6px 20px rgba(20,30,60,0.08); margin-top:18px}
+    .grid{display:grid; grid-template-columns:1fr 320px; gap:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    section h2{margin:0 0 12px 0; font-size:18px}
+    p{color:#222; line-height:1.5}
+    ul{margin:0 0 12px 18px}
+
+    /* Images placeholders */
+    .images-row{display:flex; gap:12px; flex-wrap:wrap; margin:10px 0}
+    .images-row img{width:calc(33.333% - 8px); border-radius:8px; min-width:120px; height:120px; object-fit:cover; background:#eee; border:1px dashed #ddd}
+    @media (max-width:700px){.images-row img{width:48%}}
+
+    /* framed points */
+    .frame-wrap{display:flex; gap:16px; align-items:flex-start; margin-top:14px}
+    .points-frame{background:var(--frame); border-radius:10px; padding:18px; flex:1; border:1px solid rgba(11,95,255,0.07)}
+    .points-frame h3{margin-top:0}
+    .return-btn{align-self:flex-start; margin-top:6px}
+
+    /* Retour button (positioned outside the frame visually) */
+    .return-btn button{background:transparent; border:2px solid var(--accent); color:var(--accent); padding:8px 14px; border-radius:8px; cursor:pointer}
+    .return-btn button:hover{background:var(--accent); color:#fff}
+
+    /* small helpers */
+    .small{font-size:13px; color:var(--muted)}
+    .code{background:#0f1724; color:#dbeafe; padding:10px;border-radius:8px; font-family:monospace; font-size:13px; overflow:auto}
+
+    /* footer */
+    footer{display:flex; justify-content:space-between; align-items:center; margin-top:18px}
+    .btn{background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer}
+    .btn.secondary{background:transparent; color:var(--accent); border:1px solid rgba(11,95,255,0.12)}
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Extraction des 250 meilleurs films — IMDb (projet)</h1>
+        <div class="meta">Python • Web scraping • BeautifulSoup • Pandas</div>
+      </div>
+    </header>
 
-<h1>Extraction des 250 meilleurs films IMDb</h1>
+    <div class="card">
+      <div class="grid">
+        <main>
 
-<section>
-<h2>1. Introduction / Objectif</h2>
-<p>Dans ce projet, l’objectif est d’extraire les informations relatives aux <strong>250 films les mieux notés sur IMDb</strong> à l’aide de Python et de bibliothèques spécialisées en web scraping.</p>
-<p>Cette extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p>
-<p><em>Note :</em> Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement à des fins éducatives. Le script complet n’est pas publié afin de respecter les conditions d’utilisation.</p>
-<p>Pour accéder à la version complète du script, vous pouvez me contacter.</p>
-</section>
+          <section>
+            <h2>1. Introduction / Objectif</h2>
+            <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb à l’aide de Python et de bibliothèques spécialisées en web scraping. L’extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p>
+            <p class="small">Note : Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement dans un cadre éducatif. Le script complet n’est pas publié ici pour respecter les conditions d’utilisation. Contactez-moi si vous souhaitez discuter du code.</p>
+          </section>
 
-<section>
-<h2>2. Environnement et bibliothèques utilisées</h2>
-<ul>
-<li><strong>Requests :</strong> pour envoyer des requêtes HTTP et récupérer le contenu des pages web.</li>
-<li><strong>BeautifulSoup (bs4) :</strong> pour parser le code HTML et extraire les données.</li>
-<li><strong>Pandas :</strong> pour organiser, structurer et manipuler les données extraites.</li>
-</ul>
-</section>
+          <section>
+            <h2>2. Environnement et bibliothèques utilisées</h2>
+            <ul>
+              <li><strong>Requests</strong> : envoyer des requêtes HTTP.</li>
+              <li><strong>BeautifulSoup (bs4)</strong> : parser le HTML et extraire les données.</li>
+              <li><strong>Pandas</strong> : structurer et manipuler les données.</li>
+            </ul>
+          </section>
 
-<section>
-<h2>3. Envoi de la requête HTTP</h2>
-<p>La première étape consiste à envoyer une requête vers l’URL du classement IMDb Top 250.</p>
-<p>IMDb bloque les requêtes automatiques sans <strong>User-Agent</strong> et renvoie une erreur 403. La solution consiste à ajouter un en-tête <strong>User-Agent</strong> afin de simuler un navigateur réel.</p>
-</section>
+          <section>
+            <h2>3. Envoi de la requête HTTP</h2>
+            <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
 
-<section>
-<h2>4. Navigation dans le HTML</h2>
-<p>Avant d’extraire les données, il est essentiel d’inspecter la structure HTML de la page.</p>
-<p>En ouvrant la page IMDb Top 250 Films dans un navigateur et en utilisant l’outil Inspecter, on identifie les balises et classes CSS contenant les informations recherchées (titres, notes, liens…).</p>
-</section>
+            <div class="images-row">
+              <!-- Remplacez par vos images réelles -->
+              <img src="images/image1.jpg" alt="Image1 — capture requête" />
+              <img src="images/image2.jpg" alt="Image2 — headers" />
+              <img src="images/image3.jpg" alt="Image3 — résultat" />
+            </div>
+          </section>
 
-<section>
-<h2>5. Extraction avec BeautifulSoup</h2>
-<p>Nous avons utilisé la méthode <strong>select()</strong> avec des sélecteurs CSS pour cibler les éléments pertinents, et <strong>find_next()</strong> pour récupérer les balises voisines comme l’année ou la note.</p>
-<ul>
-<li><code>soup.select("li a[href^='/title/']")</code> → cible tous les films de la liste.</li>
-<li><code>item.find_next("span")</code> → récupère l’année ou d’autres informations situées juste après le titre.</li>
-<li><code>item.find_next("span", class_="ipc-rating-star__rating")</code> → extrait la note IMDb.</li>
-</ul>
-<p><em>Le script complet n’est pas publié afin de respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée est présentée pour illustrer la méthodologie.</em></p>
-</section>
+          <section>
+            <h2>4. Navigation dans le HTML</h2>
+            <p>Avant d’extraire les données, inspectez la structure HTML de la page (outil Inspecter). Identifiez les balises et classes contenant les titres, notes et liens.</p>
+            <div class="images-row">
+              <img src="images/image4.jpg" alt="Image4 — structure HTML" />
+            </div>
+          </section>
 
-<section>
-<h2>6. Structuration des données</h2>
-<p>Les données extraites sont stockées dans un <strong>DataFrame Pandas</strong> pour faciliter la manipulation et la vérification de leur qualité.</p>
-</section>
+          <section>
+            <h2>5. Extraction avec BeautifulSoup</h2>
+            <p>Exemples d’approche avec BeautifulSoup :</p>
+            <div class="code">
+<pre># Sélection d'éléments
+soup.select("li a[href^='/title/']")
+# Récupération d'une span voisine
+item.find_next("span")
+# Note IMDb
+item.find_next("span", class_="ipc-rating-star__rating")
+</pre>
+            </div>
 
-<section>
-<h2>7. Exportation des données (optionnel)</h2>
-<p>Pour réutiliser les données plus tard, elles peuvent être exportées vers un fichier CSV :</p>
-<a href="imdb_top250.csv" class="download-btn" download>Télécharger le CSV extrait</a>
-<p><em>Note : Seule une partie du CSV est disponible pour respecter les règles d’IMDb.</em></p>
-</section>
+            <div class="images-row">
+              <img src="images/image5.jpg" alt="Image5" />
+              <img src="images/image6.jpg" alt="Image6" />
+              <img src="images/image7.jpg" alt="Image7" />
+              <img src="images/image8.jpg" alt="Image8" />
+            </div>
+          </section>
 
-<section>
-<h2>8. Conclusion</h2>
-<p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
-</section>
+          <section>
+            <h2>6. Structuration des données</h2>
+            <p>Les données extraites sont stockées dans un DataFrame Pandas pour faciliter l’analyse et la vérification.</p>
+            <div class="images-row">
+              <img src="images/image9.jpg" alt="Image9 — aperçu DataFrame" />
+            </div>
 
-<section class="highlight-box">
-<h2>📌 Points clés à retenir</h2>
-<ul>
-<li><strong>Classement IMDb (Rank) :</strong> correspond à la position officielle d’un film dans le Top 250. Exemple : Rank 1 → The Shawshank Redemption, Rank 2 → The Godfather, Rank 3 → The Dark Knight.</li>
-<li><strong>Importance de l’encodage UTF-8 :</strong> garantit la conservation correcte de tous les caractères spéciaux et symboles non latins dans le CSV (ex. Alejandro González Iñárritu).</li>
-<li><strong>Chargement partiel des films :</strong> IMDb ne place pas les 250 films dans une seule page statique. Requests + BeautifulSoup récupèrent seulement les films présents dans le HTML initial (souvent 25 premiers films). Pour récupérer tous les films, il faut combiner parsing HTML + JSON généré dynamiquement.</li>
-<li><strong>Réalité du web scraping :</strong> la structure HTML d’IMDb change régulièrement. Un script fonctionnel aujourd’hui peut cesser de fonctionner demain.</li>
-</ul>
-<p>L’analyse complète est disponible dans l’onglet <strong>Analyse</strong> de mon portfolio.</p>
-</section>
+            <p class="small">Le script complet n’est pas publié ici pour respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée illustre la méthodologie.</p>
+          </section>
 
+          <section>
+            <h2>7. Exportation des données (optionnel)</h2>
+            <p>Pour réutiliser les données, exportez-les en CSV avec <code>df.to_csv('imdb_top250.csv', encoding='utf-8', index=False)</code>.</p>
+            <div class="images-row">
+              <img src="images/image10.jpg" alt="Image10 — export CSV" />
+              <img src="images/image11.jpg" alt="Image11 — fichier csv" />
+            </div>
+          </section>
+
+          <section>
+            <h2>8. Conclusion</h2>
+            <p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
+
+            <div class="frame-wrap">
+              <div class="return-btn">
+                <!-- Bouton RETOUR -->
+                <button onclick="history.back()" title="Retour">← Retour</button>
+              </div>
+
+              <div class="points-frame">
+                <h3>Points clés à retenir</h3>
+                <ul>
+                  <li><strong>Classement IMDb (Rank)</strong> : position officielle dans le Top 250 (ex. Rank 1 → The Shawshank Redemption).</li>
+                  <li><strong>Importance de l’encodage UTF-8</strong> : utilisez <code>encoding="utf-8"</code> lors de l’export CSV.</li>
+                  <li><strong>Chargement partiel</strong> : IMDb charge une partie du contenu dynamiquement — BeautifulSoup ne récupère que les premiers films.</li>
+                  <li><strong>Réalité du web scraping</strong> : la structure HTML change → maintenance régulière du script.</li>
+                </ul>
+
+                <p class="small">Analyse complète disponible dans l’onglet Analyse de mon portfolio. <a href="#">Lien vers l’analyse</a></p>
+                <p class="small">Télécharger une partie du fichier CSV extrait : <a href="#" id="download-csv">Télécharger CSV (extrait)</a></p>
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <aside>
+          <div class="small">Détails rapides</div>
+          <div class="card" style="margin-top:10px">
+            <p><strong>Stack:</strong><br>Python — Requests / BeautifulSoup / Pandas</p>
+            <p><strong>Remarques légales:</strong><br>Respect des conditions d'utilisation d'IMDb. Script complet non publié.</p>
+            <p style="margin-top:10px"><button class="btn" id="btn-contact">Contacter</button></p>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <p><strong>Extrait de code (simplifié)</strong></p>
+            <div class="code">
+<pre>headers = {"User-Agent": "Mozilla/5.0"}
+resp = requests.get(url, headers=headers)
+soup = BeautifulSoup(resp.text, 'html.parser')
+items = soup.select("li a[href^='/title/']")
+</pre>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        <div>
+          <button class="btn secondary" onclick="window.open('#','_blank')">Onglet Analyse</button>
+        </div>
+        <div>
+          <button class="btn" id="btn-download">Télécharger CSV</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('btn-contact').addEventListener('click', ()=>{
+      window.location.href = 'mailto:votre.email@example.com?subject=Projet IMDb Top250';
+    });
+
+    document.getElementById('btn-download').addEventListener('click', ()=>{
+      const url = '/files/imdb_top250_sample.csv';
+      const a = document.createElement('a'); 
+      a.href = url; 
+      a.download = 'imdb_top250_extrait.csv'; 
+      document.body.appendChild(a); 
+      a.click(); 
+      a.remove();
+    });
+
+    document.getElementById('download-csv').addEventListener('click', (e)=>{
+      e.preventDefault(); 
+      document.getElementById('btn-download').click();
+    });
+  </script>
 </body>
 </html>
+
 
 
 
