@@ -3,158 +3,51 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Extraction IMDb Top 250 — Projet</title>
+  <title>Test feuille + aside fixé</title>
   <style>
-    :root{
-      --bg:#f6f7fb;
-      --card:#ffffff;
-      --muted:#6b6f76;
-      --accent:#0b5fff;
-      --accent-hover:#0946c8;
-      --frame:#eef3ff;
-    }
-
-    *{box-sizing:border-box}
-    body{
-      font-family: Inter, system-ui, Arial, "Helvetica Neue", sans-serif;
+    body {
       margin:0;
-      background:var(--bg);
-      color:#111;
+      background:#f6f7fb;
+      font-family:sans-serif;
     }
 
-    /* feuille centrale façon "Word" */
-    .container {
-      max-width: 1100px;   /* largeur fixe proche Word zoom 150% */
-      margin: 32px auto;   /* centrage horizontal */
-      padding: 24px;
+    /* feuille centrale façon Word */
+    .page {
+      background:#fff;
+      width:1100px;      /* largeur fixe comme Word zoomé */
+      min-height:1400px; /* hauteur type feuille */
+      margin:32px auto;  /* centrage horizontal */
+      padding:40px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.1);
     }
 
-    header{display:flex; align-items:center; gap:16px}
-    header h1{font-size:20px; margin:0}
-    .meta{color:var(--muted); font-size:14px}
-
-    .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 40px;
-      box-shadow: 0 6px 20px rgba(20,30,60,0.08);
-      margin-top: 18px;
-      min-height: 1400px; /* hauteur type feuille */
-    }
-
-    /* plus de grille 2 colonnes */
-    .grid { display: block; }
-
-    section h2{margin:0 0 12px 0; font-size:18px}
-    p{color:#222; line-height:1.5}
-    ul{margin:0 0 12px 18px}
-
-    .frame-wrap{display:flex; gap:16px; align-items:flex-start; margin-top:14px}
-    .points-frame{background:var(--frame); border-radius:10px; padding:18px; flex:1; border:1px solid rgba(11,95,255,0.07)}
-    .points-frame h3{margin-top:0}
-
-    .btn{
-      background:var(--accent);
-      color:#fff;
-      border:none;
-      padding:10px 14px;
-      border-radius:8px;
-      cursor:pointer;
-      display:inline-block;
-    }
-    .btn.secondary{
-      background:transparent;
-      color:var(--accent);
-      border:2px solid var(--accent);
-    }
-
-    /* aside fixé à droite de la fenêtre */
+    /* aside fixé à droite */
     aside {
-      position: fixed;
-      top: 120px;
-      right: 20px;
-      width: 280px;
-      z-index: 100;
+      position:fixed;
+      top:100px;
+      right:20px;
+      width:260px;
+      background:#fff;
+      padding:20px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
     }
-    aside .card {
-      margin-top: 20px;
-      padding: 16px;
-    }
-
-    footer{display:flex; justify-content:space-between; margin-top:18px}
-    .footer-btns{display:flex; flex-direction:column; gap:10px}
-
-    .small{font-size:13px; color:var(--muted)}
-    .code{background:#0f1724; color:#dbeafe; padding:10px; border-radius:8px; font-family:monospace; font-size:13px; overflow:auto}
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div>
-        <h1>Extraction des 250 meilleurs films — IMDb (projet)</h1>
-        <div class="meta">Python • Web scraping • BeautifulSoup • Pandas</div>
-      </div>
-    </header>
-
-    <div class="card">
-      <div class="grid">
-        <main>
-          <section>
-            <h2>1. Introduction / Objectif</h2>
-            <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb à l’aide de Python et de bibliothèques spécialisées en web scraping.</p>
-            <p class="small">Note : Données utilisées uniquement à des fins éducatives.</p>
-          </section>
-
-          <section>
-            <h2>2. Conclusion</h2>
-            <p>Extraction réalisée avec succès. Données prêtes pour analyse et visualisation.</p>
-            <div class="frame-wrap">
-              <div class="points-frame">
-                <h3>Points clés</h3>
-                <ul>
-                  <li><strong>Classement IMDb</strong> : Rank officiel dans le Top 250.</li>
-                  <li><strong>Encodage UTF-8</strong> pour l’export CSV.</li>
-                  <li><strong>Maintenance</strong> nécessaire car IMDb change sa structure.</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-        </main>
-      </div>
-
-      <footer>
-        <div>
-          <button class="btn secondary">← Retour</button>
-        </div>
-        <div class="footer-btns">
-          <button class="btn">Télécharger CSV</button>
-          <button class="btn">Analyse complète</button>
-        </div>
-      </footer>
-    </div>
+  <div class="page">
+    <h1>Feuille centrale</h1>
+    <p>Ceci est une "page blanche" façon Word, élargie et centrée.</p>
+    <p>Tu peux écrire tout ton contenu ici.</p>
   </div>
 
-  <!-- ASIDE SORTI ET FIXÉ À DROITE -->
   <aside>
-    <div class="small">Détails rapides</div>
-    <div class="card">
-      <p><strong>Stack:</strong><br>Python — Requests / BeautifulSoup / Pandas</p>
-      <p><strong>Légal:</strong><br>Respect des conditions IMDb.</p>
-      <button class="btn">Contactez-moi</button>
-    </div>
-
-    <div class="card">
-      <p><strong>Extrait de code</strong></p>
-      <div class="code">
-<pre>headers = {"User-Agent": "Mozilla/5.0"}
-resp = requests.get(url, headers=headers)
-soup = BeautifulSoup(resp.text, 'html.parser')</pre>
-      </div>
-    </div>
+    <h2>Aside fixe</h2>
+    <p>Je reste collé à droite même si tu descends dans la page.</p>
   </aside>
 </body>
 </html>
+
 
 
 
