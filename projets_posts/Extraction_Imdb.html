@@ -55,7 +55,7 @@
       width:calc(33.333% - 8px);
       border-radius:8px;
       min-width:120px;
-      height:200px; /* ← hauteur plus grande */
+      height:120px;
       object-fit:cover;
       background:#eee;
       border:1px dashed #ddd
@@ -140,28 +140,74 @@
         <main>
           <section>
             <h2>1. Introduction / Objectif</h2>
-            <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb...</p>
+            <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb à l’aide de Python...</p>
+            <p class="small">Note : Les données utilisées proviennent d’IMDb...</p>
+          </section>
+
+          <section>
+            <h2>2. Environnement et bibliothèques utilisées</h2>
+            <ul>
+              <li><strong>Requests</strong> : envoyer des requêtes HTTP.</li>
+              <li><strong>BeautifulSoup (bs4)</strong> : parser le HTML et extraire les données.</li>
+              <li><strong>Pandas</strong> : structurer et manipuler les données.</li>
+            </ul>
           </section>
 
           <section>
             <h2>3. Envoi de la requête HTTP</h2>
             <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403)...</p>
             <div class="images-row">
-              <img src="/img/projet2/1.png" alt="Image 1">
-              <img src="/img/projet2/2.png" alt="Image 2">
-              <img src="/img/projet2/3.png" alt="Image 3">
+              <img src="/img/projet2/Images1.jpeg" alt="Image 1">
+              <img src="/img/projet2/image2.jpeg" alt="Image 2">
+              <img src="/img/projet2/Images3.jpeg" alt="Image 3">
             </div>
           </section>
 
           <section>
+            <h2>4. Navigation dans le HTML</h2>
+            <p>Avant d’extraire les données, inspectez la structure HTML...</p>
+            <img src="/img/projet2/Images4.jpeg" alt="Image 4" width="400">
+          </section>
+
+          <section>
+            <h2>5. Extraction avec BeautifulSoup</h2>
+            <p>Exemples d’approche avec BeautifulSoup :</p>
+            <img src="/img/projet2/Images5.jpeg" alt="Image 5" width="400">
+            <img src="/img/projet2/Images6.jpeg" alt="Image 6" width="400">
+            <img src="/img/projet2/Images7.jpeg" alt="Image 7" width="400">
+            <img src="/img/projet2/Images8.jpeg" alt="Image 8" width="400">
+          </section>
+
+          <section>
+            <h2>6. Structuration des données</h2>
+            <p>Les données extraites sont stockées dans un DataFrame Pandas...</p>
+            <img src="/img/projet2/Images9.jpeg" alt="Image 9" width="400">
+            <p class="small">Le script complet n’est pas publié ici...</p>
+          </section>
+
+          <section>
+            <h2>7. Exportation des données (optionnel)</h2>
+            <p>Pour réutiliser les données, exportez-les en CSV...</p>
+            <img src="/img/projet2/Images10.jpeg" alt="Image 10" width="400">
+            <img src="/img/projet2/Images11.jpeg" alt="Image 11" width="400">
+          </section>
+
+          <section>
             <h2>8. Conclusion</h2>
+            <p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée...</p>
             <div class="frame-wrap">
               <div class="points-frame">
                 <h3>Points clés à retenir</h3>
                 <ul>
-                  <li><strong>Classement IMDb (Rank)</strong> : position officielle dans le Top 250.</li>
-                  <li><strong>Importance de l’encodage UTF-8</strong></li>
+                  <li><strong>Classement IMDb (Rank)</strong> : position officielle...</li>
+                  <li><strong>Importance de l’encodage UTF-8</strong>...</li>
+                  <li><strong>Chargement partiel</strong> : IMDb charge une partie...</li>
+                  <li><strong>Réalité du web scraping</strong>...</li>
                 </ul>
+                <p class="small">Analyse complète disponible dans l’onglet Analyse...</p>
+                <p class="small">Télécharger une partie du fichier CSV extrait : 
+                  <a href="#" id="download-csv">Télécharger extrait csv</a>
+                </p>
               </div>
             </div>
           </section>
@@ -171,10 +217,20 @@
           <div class="small">Détails rapides</div>
           <div class="card" style="margin-top:10px">
             <p><strong>Stack:</strong><br>Python — Requests / BeautifulSoup / Pandas</p>
-            <p><strong>Remarques légales:</strong><br>Respect des conditions d'utilisation d’IMDb.</p>
+            <p><strong>Remarques légales:</strong><br>Respect des conditions d'utilisation d'IMDb.</p>
             <p class="aside-contact">
-              <button class="btn" id="btn-contact">Contactez-moi</button>
+              <button class="btn" id="btn-contact" aria-label="Contactez-moi">Contactez-moi</button>
             </p>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <p><strong>Extrait de code (simplifié)</strong></p>
+            <div class="code">
+<pre>headers = {"User-Agent": "Mozilla/5.0"}
+resp = requests.get(url, headers=headers)
+soup = BeautifulSoup(resp.text, 'html.parser')
+items = soup.select("li a[href^='/title/']")</pre>
+            </div>
           </div>
         </aside>
       </div>
@@ -183,21 +239,46 @@
         <div>
           <button class="btn secondary" onclick="window.location.href='/projets/index.html'">← Retour</button>
         </div>
-        <div class="footer-btns">
-          <button class="btn" id="btn-download">Télécharger extrait csv</button>
-          <button class="btn" id="btn-analyse">Analyse du csv entier</button>
+        <div class="footer-btns" aria-hidden="false">
+          <button class="btn" id="btn-download" aria-label="Télécharger extrait csv">Télécharger extrait csv</button>
+          <button class="btn" id="btn-analyse" aria-label="Analyse du csv entier">Analyse du csv entier</button>
         </div>
       </footer>
     </div>
   </div>
 
   <script>
+    // Contact -> page contact
     document.getElementById('btn-contact').addEventListener('click', function(){
       window.location.href = '/contact.html';
     });
+    // Télécharger -> fichier (encode URI)
+    document.getElementById('btn-download').addEventListener('click', function(){
+      const raw = '/assets/imdb_top250_partie des données.csv';
+      const url = encodeURI(raw);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'imdb_top250_extrait.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+    // Analyse -> page d'analyse complète
+    document.getElementById('btn-analyse').addEventListener('click', function(){
+      window.location.href = '/projets_posts/Analyse_Imdb_top250.html';
+    });
+    // Lien dans le cadre "Points clés"
+    const linkCsv = document.getElementById('download-csv');
+    if (linkCsv) {
+      linkCsv.addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('btn-download').click();
+      });
+    }
   </script>
 </body>
 </html>
+
 
 
 
