@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projet IMDb Top 250</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       margin: 0;
@@ -17,30 +18,32 @@
     header {
       background: linear-gradient(135deg, #3b82f6, #2563eb);
       color: white;
-      padding: 2rem;
+      padding: 2.5rem;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
     }
 
     main {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 2rem auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
       padding: 0 1rem;
     }
 
-    section {
-      margin-bottom: 2rem;
+    section, aside {
       background: white;
       border-radius: 12px;
       padding: 1.5rem;
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
 
-    section h2 {
+    section h2, aside h2 {
       margin-top: 0;
       color: #2563eb;
     }
@@ -65,6 +68,7 @@
       text-align: center;
       padding: 2rem;
       background: #f1f5f9;
+      margin-top: 2rem;
     }
 
     button {
@@ -79,8 +83,17 @@
       transition: background 0.3s ease;
     }
 
+    button.secondary {
+      background: #64748b;
+    }
+
     button:hover {
       background: #1e40af;
+    }
+
+    canvas {
+      max-width: 100%;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -94,18 +107,14 @@
     <section>
       <h2>🎯 Objectif</h2>
       <p>Automatiser l’extraction des 250 meilleurs films sur IMDb afin de créer un jeu de données exploitable pour l’analyse et la visualisation.</p>
-    </section>
-
-    <section>
+      
       <h2>⚙️ Méthodologie</h2>
       <ul>
         <li>Scraping des pages IMDb avec <strong>Requests</strong> et <strong>BeautifulSoup</strong>.</li>
-        <li>Nettoyage des données et export en CSV.</li>
-        <li>Exploration statistique et visualisation.</li>
+        <li>Nettoyage et structuration des données.</li>
+        <li>Export en CSV puis analyse exploratoire.</li>
       </ul>
-    </section>
 
-    <section>
       <h2>📜 Extrait de code</h2>
       <div class="code">
 <pre>
@@ -115,21 +124,26 @@ soup = BeautifulSoup(resp.text, 'html.parser')
 items = soup.select("li a[href^='/title/']")
 </pre>
       </div>
+
+      <h2>📊 Exemple de visualisation</h2>
+      <canvas id="chart"></canvas>
     </section>
 
-    <section class="highlight">
-      <h2>📌 Points clés à retenir</h2>
-      <ul>
-        <li>Automatisation de la collecte de données.</li>
-        <li>Export en CSV pour réutilisation rapide.</li>
-        <li>Base solide pour l’analyse exploratoire.</li>
-      </ul>
-    </section>
+    <aside>
+      <div class="highlight">
+        <h2>📌 Points clés</h2>
+        <ul>
+          <li>Automatisation de la collecte de données.</li>
+          <li>Export en CSV pour réutilisation rapide.</li>
+          <li>Analyse et visualisation des tendances cinéma.</li>
+        </ul>
+      </div>
 
-    <section style="text-align:center;">
-      <button onclick="window.open('mailto:votre.email@example.com?subject=Projet IMDb Top250','_blank')">Me contacter</button>
-      <button id="btn-download">Télécharger CSV</button>
-    </section>
+      <div style="margin-top:1.5rem;text-align:center;">
+        <button id="btn-contact">Me contacter</button>
+        <button id="btn-download">Télécharger CSV</button>
+      </div>
+    </aside>
   </main>
 
   <footer>
@@ -137,6 +151,11 @@ items = soup.select("li a[href^='/title/']")
   </footer>
 
   <script>
+    // Boutons
+    document.getElementById('btn-contact').addEventListener('click', ()=>{
+      window.location.href = 'mailto:votre.email@example.com?subject=Projet IMDb Top250';
+    });
+
     document.getElementById('btn-download').addEventListener('click', ()=>{
       const url = '/files/imdb_top250_sample.csv';
       const a = document.createElement('a'); 
@@ -146,6 +165,27 @@ items = soup.select("li a[href^='/title/']")
       a.click(); 
       a.remove();
     });
+
+    // Graphique Chart.js
+    const ctx = document.getElementById('chart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['9.0', '8.9', '8.8', '8.7', '8.6'],
+        datasets: [{
+          label: 'Nombre de films par note IMDb',
+          data: [12, 35, 64, 80, 59],
+          backgroundColor: '#3b82f6'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
   </script>
 </body>
 </html>
+
