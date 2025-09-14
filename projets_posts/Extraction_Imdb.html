@@ -1,256 +1,134 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projet IMDb Top 250</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    :root {
-      --bg: #f5f7fa;
-      --card: #ffffff;
-      --text: #333;
-      --accent: #2563eb;
-      --code-bg: #1e293b;
-    }
-
-    [data-theme="dark"] {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #e5e7eb;
-      --accent: #3b82f6;
-      --code-bg: #0f172a;
-    }
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extraction IMDb Top 250</title>
+<style>
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background 0.3s, color 0.3s;
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
     }
-
-    header {
-      text-align: center;
-      padding: 4rem 2rem 3rem;
-      background: linear-gradient(135deg, var(--accent), #1e40af);
-      color: white;
+    h1, h2 {
+        color: #333;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.6rem;
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
     }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    section {
+        background: #fff;
+        padding: 20px 30px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
-    .container {
-      max-width: 1100px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    ul {
+        margin: 10px 0 10px 20px;
     }
-
-    .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: background 0.3s, color 0.3s;
+    li {
+        margin-bottom: 5px;
     }
-
-    .card h2 {
-      margin-top: 0;
-      color: var(--accent);
+    .highlight-box {
+        background-color: #e8f0fe;
+        border-left: 5px solid #4285f4;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-top: 20px;
     }
-
-    .code {
-      background: var(--code-bg);
-      color: #e5e7eb;
-      padding: 1rem;
-      border-radius: 8px;
-      font-family: monospace;
-      overflow-x: auto;
-      font-size: 0.9rem;
+    .download-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #4285f4;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
     }
-
-    .highlight {
-      border-left: 4px solid var(--accent);
-      padding-left: 1rem;
-      background: rgba(37,99,235,0.05);
-      border-radius: 8px;
+    .download-btn:hover {
+        background-color: #2a65c7;
     }
-
-    .timeline {
-      position: relative;
-      margin: 2rem 0;
-      padding-left: 2rem;
-      border-left: 3px solid var(--accent);
-    }
-
-    .timeline div {
-      margin-bottom: 1.5rem;
-    }
-
-    button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      margin: 0.5rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #1e40af;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--card);
-      margin-top: 2rem;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    footer a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--accent);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-    }
-  </style>
+</style>
 </head>
 <body>
-  <header>
-    <h1>Extraction des 250 meilleurs films IMDb</h1>
-    <p>Projet Data Science – Web Scraping, Analyse et Visualisation</p>
-  </header>
 
-  <button class="theme-toggle" id="toggle-theme">🌙</button>
+<h1>Extraction des 250 meilleurs films IMDb</h1>
 
-  <div class="container">
-    <div class="card">
-      <h2>🎯 Objectif</h2>
-      <p>Automatiser l’extraction des 250 meilleurs films sur IMDb afin de créer un jeu de données exploitable pour l’analyse et la visualisation.</p>
-    </div>
+<section>
+<h2>1. Introduction / Objectif</h2>
+<p>Dans ce projet, l’objectif est d’extraire les informations relatives aux <strong>250 films les mieux notés sur IMDb</strong> à l’aide de Python et de bibliothèques spécialisées en web scraping.</p>
+<p>Cette extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p>
+<p><em>Note :</em> Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement à des fins éducatives. Le script complet n’est pas publié afin de respecter les conditions d’utilisation.</p>
+<p>Pour accéder à la version complète du script, vous pouvez me contacter.</p>
+</section>
 
-    <div class="card">
-      <h2>⚙️ Méthodologie</h2>
-      <div class="timeline">
-        <div>📡 Scraping des pages IMDb avec <strong>Requests</strong> & <strong>BeautifulSoup</strong></div>
-        <div>🧹 Nettoyage et structuration des données</div>
-        <div>📊 Export en CSV et analyse exploratoire</div>
-        <div>📈 Visualisation des tendances cinéma</div>
-      </div>
-    </div>
+<section>
+<h2>2. Environnement et bibliothèques utilisées</h2>
+<ul>
+<li><strong>Requests :</strong> pour envoyer des requêtes HTTP et récupérer le contenu des pages web.</li>
+<li><strong>BeautifulSoup (bs4) :</strong> pour parser le code HTML et extraire les données.</li>
+<li><strong>Pandas :</strong> pour organiser, structurer et manipuler les données extraites.</li>
+</ul>
+</section>
 
-    <div class="card">
-      <h2>📜 Extrait de code</h2>
-      <div class="code">
-<pre>
-headers = {"User-Agent": "Mozilla/5.0"}
-resp = requests.get(url, headers=headers)
-soup = BeautifulSoup(resp.text, 'html.parser')
-items = soup.select("li a[href^='/title/']")
-</pre>
-      </div>
-    </div>
+<section>
+<h2>3. Envoi de la requête HTTP</h2>
+<p>La première étape consiste à envoyer une requête vers l’URL du classement IMDb Top 250.</p>
+<p>IMDb bloque les requêtes automatiques sans <strong>User-Agent</strong> et renvoie une erreur 403. La solution consiste à ajouter un en-tête <strong>User-Agent</strong> afin de simuler un navigateur réel.</p>
+</section>
 
-    <div class="card">
-      <h2>📊 Exemple de visualisation</h2>
-      <canvas id="chart"></canvas>
-    </div>
+<section>
+<h2>4. Navigation dans le HTML</h2>
+<p>Avant d’extraire les données, il est essentiel d’inspecter la structure HTML de la page.</p>
+<p>En ouvrant la page IMDb Top 250 Films dans un navigateur et en utilisant l’outil Inspecter, on identifie les balises et classes CSS contenant les informations recherchées (titres, notes, liens…).</p>
+</section>
 
-    <div class="card highlight">
-      <h2>📌 Points clés à retenir</h2>
-      <ul>
-        <li>Automatisation de la collecte de données</li>
-        <li>Export en CSV réutilisable</li>
-        <li>Visualisation claire des tendances</li>
-      </ul>
-    </div>
+<section>
+<h2>5. Extraction avec BeautifulSoup</h2>
+<p>Nous avons utilisé la méthode <strong>select()</strong> avec des sélecteurs CSS pour cibler les éléments pertinents, et <strong>find_next()</strong> pour récupérer les balises voisines comme l’année ou la note.</p>
+<ul>
+<li><code>soup.select("li a[href^='/title/']")</code> → cible tous les films de la liste.</li>
+<li><code>item.find_next("span")</code> → récupère l’année ou d’autres informations situées juste après le titre.</li>
+<li><code>item.find_next("span", class_="ipc-rating-star__rating")</code> → extrait la note IMDb.</li>
+</ul>
+<p><em>Le script complet n’est pas publié afin de respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée est présentée pour illustrer la méthodologie.</em></p>
+</section>
 
-    <div class="card" style="text-align:center;">
-      <button id="btn-contact">Me contacter</button>
-      <button id="btn-download">Télécharger CSV</button>
-    </div>
-  </div>
+<section>
+<h2>6. Structuration des données</h2>
+<p>Les données extraites sont stockées dans un <strong>DataFrame Pandas</strong> pour faciliter la manipulation et la vérification de leur qualité.</p>
+</section>
 
-  <footer>
-    <p>&copy; 2025 – Portfolio Rachilde Angor</p>
-    <a href="https://github.com/Rachilde09" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/ton-profil" target="_blank">LinkedIn</a>
-    <a href="mailto:votre.email@example.com">Email</a>
-  </footer>
+<section>
+<h2>7. Exportation des données (optionnel)</h2>
+<p>Pour réutiliser les données plus tard, elles peuvent être exportées vers un fichier CSV :</p>
+<a href="imdb_top250.csv" class="download-btn" download>Télécharger le CSV extrait</a>
+<p><em>Note : Seule une partie du CSV est disponible pour respecter les règles d’IMDb.</em></p>
+</section>
 
-  <script>
-    // Mode sombre / clair
-    const toggleBtn = document.getElementById('toggle-theme');
-    toggleBtn.addEventListener('click', ()=>{
-      document.body.dataset.theme = 
-        document.body.dataset.theme === "dark" ? "" : "dark";
-      toggleBtn.textContent = 
-        document.body.dataset.theme === "dark" ? "☀️" : "🌙";
-    });
+<section>
+<h2>8. Conclusion</h2>
+<p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
+</section>
 
-    // Boutons
-    document.getElementById('btn-contact').addEventListener('click', ()=>{
-      window.location.href = 'mailto:votre.email@example.com?subject=Projet IMDb Top250';
-    });
+<section class="highlight-box">
+<h2>📌 Points clés à retenir</h2>
+<ul>
+<li><strong>Classement IMDb (Rank) :</strong> correspond à la position officielle d’un film dans le Top 250. Exemple : Rank 1 → The Shawshank Redemption, Rank 2 → The Godfather, Rank 3 → The Dark Knight.</li>
+<li><strong>Importance de l’encodage UTF-8 :</strong> garantit la conservation correcte de tous les caractères spéciaux et symboles non latins dans le CSV (ex. Alejandro González Iñárritu).</li>
+<li><strong>Chargement partiel des films :</strong> IMDb ne place pas les 250 films dans une seule page statique. Requests + BeautifulSoup récupèrent seulement les films présents dans le HTML initial (souvent 25 premiers films). Pour récupérer tous les films, il faut combiner parsing HTML + JSON généré dynamiquement.</li>
+<li><strong>Réalité du web scraping :</strong> la structure HTML d’IMDb change régulièrement. Un script fonctionnel aujourd’hui peut cesser de fonctionner demain.</li>
+</ul>
+<p>L’analyse complète est disponible dans l’onglet <strong>Analyse</strong> de mon portfolio.</p>
+</section>
 
-    document.getElementById('btn-download').addEventListener('click', ()=>{
-      const url = '/files/imdb_top250_sample.csv';
-      const a = document.createElement('a'); 
-      a.href = url; 
-      a.download = 'imdb_top250_extrait.csv'; 
-      document.body.appendChild(a); 
-      a.click(); 
-      a.remove();
-    });
-
-    // Chart.js
-    const ctx = document.getElementById('chart');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['9.0', '8.9', '8.8', '8.7', '8.6'],
-        datasets: [{
-          label: 'Nombre de films par note IMDb',
-          data: [12, 35, 64, 80, 59],
-          backgroundColor: '#3b82f6'
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false }
-        }
-      }
-    });
-  </script>
 </body>
 </html>
+
+
 
 
