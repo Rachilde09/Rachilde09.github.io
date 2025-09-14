@@ -1,158 +1,39 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Extraction IMDb Top 250 — Projet</title>
- <style>
-  :root {
-    --bg:#f6f7fb;
-    --card:#ffffff;
-    --muted:#6b6f76;
-    --accent:#0b5fff;
-    --accent-hover:#0946c8;
-    --frame:#eef3ff;
-  }
+<style>
+:root {
+  --navbar-height: 70px;
+}
 
-  * { box-sizing: border-box; }
+/* Ajoute de l’espace en haut du body pour éviter que le contenu soit caché sous la navbar */
+body {
+  margin: 0;
+  padding-top: var(--navbar-height); /* Compense la navbar fixe */
+}
 
-  body {
-    font-family: Inter, system-ui, Arial, "Helvetica Neue", sans-serif;
-    margin: 0;
-    background: var(--bg);
-    color: #111;
-  }
-
-  /* Container principal collé à gauche */
-  .container {
-    margin: 0;
-    padding: 24px;
-    margin-right: 320px;       /* espace pour le aside */
-    max-width: calc(100% - 320px); /* prend toute la largeur restante */
-  }
-
-  header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  header h1 { font-size: 20px; margin: 0; }
-  .meta { color: var(--muted); font-size: 14px; }
-
-  .card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 6px 20px rgba(20,30,60,0.08);
-    margin-top: 18px;
-    min-height: 1400px; /* imite une feuille Word zoomée */
-  }
-
-  .grid { display: block; }
-
-  section h2 { margin: 0 0 12px 0; font-size: 18px; }
-  p { color: #222; line-height: 1.5; }
-  ul { margin: 0 0 12px 18px; }
-
-  .frame-wrap {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    margin-top: 14px;
-  }
-  .points-frame {
-    background: var(--frame);
-    border-radius: 10px;
-    padding: 18px;
-    flex: 1;
-    border: 1px solid rgba(11,95,255,0.07);
-  }
-  .points-frame h3 { margin-top: 0; }
-
-  /* Boutons */
-  .btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 10px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    display: inline-block;
-    transition: 0.12s;
-  }
-  .btn.secondary {
-    background: transparent;
-    color: var(--accent);
-    border: 2px solid var(--accent);
-  }
-  .btn:hover, .btn.secondary:hover { background: var(--accent-hover); color: #fff; }
-  .btn:active, .btn.secondary:active { transform: scale(0.96); }
-  .btn:focus { outline: none; box-shadow: 0 0 0 6px rgba(11,95,255,0.10); }
-
-  .small { font-size: 13px; color: var(--muted); }
-  .code {
-    background: #0f1724;
-    color: #dbeafe;
-    padding: 10px;
-    border-radius: 8px;
-    font-family: monospace;
-    font-size: 13px;
-    overflow: auto;
-  }
-
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 18px;
-  }
-  .footer-btns { display: flex; flex-direction: column; gap: 10px; }
-
-  /* aside complètement à droite */
- aside {
-  position: fixed;
-  top: 20px;
+/* NAVBAR FIXE EN HAUT */
+#mainNav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
   right: 0;
-  width: 300px;
-  height: 300px;      /* hauteur fixe */
-  padding: 20px;
-  overflow-y: auto;
-  box-shadow: -4px 0 12px rgba(0,0,0,0.1);
-  z-index: 100;
-  background: var(--bg);
+  height: var(--navbar-height);
+  background: linear-gradient(135deg, #9333ea, #3b82f6) !important;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
-
-  aside .card {
-    padding: 16px;
-    border-radius: 10px;
-    background: var(--card);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .aside-contact {
-    margin-top: 10px;
-    display: block;
-    text-align: left;
-  }
-   img {
-  max-width: 100%;   /* jamais dépasser le conteneur */
-  height: auto;      /* conserve les proportions */
-  border-radius: 8px;
-  margin-bottom: 16px;
-  display: block;
-}
-img.zoomable {
-  max-width: 100%;
-  height: auto;
-  transition: transform 0.25s ease;
-  cursor: zoom-in;
+/* Style du texte */
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+  color: white !important;
+  font-weight: 500;
 }
 
-img.zoomable:hover {
-  transform: scale(1.3); /* agrandissement */
-  z-index: 10;
-  position: relative;
+#mainNav .nav-link:hover {
+  color: #e0e0ff !important;
+  text-decoration: underline;
 }
+
 /* Empêche tout script JS de cacher ou animer la navbar */
 .affix,
 .navbar-shrink {
@@ -161,166 +42,29 @@ img.zoomable:hover {
 }
 </style>
 
-</head>
-<body>
+<!-- NAVIGATION FIXE -->
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
   <div class="container">
-    <header>
-      <div>
-        <h1>Extraction des 250 meilleurs films — IMDb (projet)</h1>
-        <div class="meta">Python • Web scraping • BeautifulSoup • Pandas</div>
-      </div>
-    </header>
-
-    <div class="card">
-      <main>
-        <section>
-            <h2>1. Introduction / Objectif</h2>
-            <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb à l’aide de Python et de bibliothèques spécialisées en web scraping. L’extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p>
-            <p class="small">Note : Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement dans un cadre éducatif. Le script complet n’est pas publié ici pour respecter les conditions d’utilisation. Contactez-moi si vous souhaitez discuter du code.</p>
-          </section>
-
-         <section>
-            <h2>2. Environnement et bibliothèques utilisées</h2>
-            <ul>
-              <li><strong>Requests</strong> : envoyer des requêtes HTTP.</li>
-              <li><strong>BeautifulSoup (bs4)</strong> : parser le HTML et extraire les données.</li>
-              <li><strong>Pandas</strong> : structurer et manipuler les données.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2>3. Envoi de la requête HTTP</h2>
-            <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
-<div style="display:flex; gap:10px; flex-wrap:wrap;">
-  <a href="/img/projet2/Images1.jpeg" target="_blank">
-  <img src="/img/projet2/Images1.jpeg" alt="Image 1" class="zoomable">
-</a>
-  <br>
-<a href="/img/projet2/image2.jpeg" target="_blank">
-  <img src="/img/projet2/image2.jpeg" alt="Image 2" class="zoomable">
-</a>
-  <br>
-<a href="/img/projet2/Images3.jpeg" target="_blank">
-  <img src="/img/projet2/Images3.jpeg" alt="Image 3" class="zoomable">
-</a>
-</div>
-
-          </section>
-<br>
-          <section>
-            <h2>4. Navigation dans le HTML</h2>
-            <p>Avant d’extraire les données, inspectez la structure HTML de la page (outil Inspecter). Identifiez les balises et classes contenant les titres, notes et liens.</p>
-            <br>
-           <a href="/img/projet2/Images4.jpeg" target="_blank">
-  <img src="/img/projet2/Images4.jpeg" alt="Image 4" class="zoomable">
-</a>
-          </section>
-<br>
-          <section>
-            <h2>5. Extraction avec BeautifulSoup</h2>
-            <p>Exemples d’approche avec BeautifulSoup :</p>
-          <br> <a href="/img/projet2/Images5.jpeg" target="_blank">
-  <img src="/img/projet2/Images5.jpeg" alt="Image 5" class="zoomable">
-</a>
-           <br> <a href="/img/projet2/Images6.jpeg" target="_blank">
-  <img src="/img/projet2/Images6.jpeg" alt="Image 6" class="zoomable">
-</a>
-           <br> <a href="/img/projet2/Images7.jpeg" target="_blank">
-  <img src="/img/projet2/Images7.jpeg" alt="Image 7" class="zoomable">
-</a>
-           <br> <a href="/img/projet2/Images8.jpeg" target="_blank">
-  <img src="/img/projet2/Images8.jpeg" alt="Image 8" class="zoomable">
-</a>
-          
-          </section>
-<br>
-          <section>
-            <h2>6. Structuration des données</h2>
-            <p>Les données extraites sont stockées dans un DataFrame Pandas pour faciliter l’analyse et la vérification.</p>
-<br> <a href="/img/projet2/Images9.jpeg" target="_blank">
-  <img src="/img/projet2/Images9.jpeg" alt="Image 9" class="zoomable">
-</a>
-
-            <p class="small">Le script complet n’est pas publié ici pour respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée illustre la méthodologie.</p>
-          </section>
-<br>
-          <section>
-            <h2>7. Exportation des données (optionnel)</h2>
-            <p>Pour réutiliser les données, exportez-les en CSV avec <code>df.to_csv('imdb_top250.csv', encoding='utf-8', index=False)</code>.</p>
-<br> <a href="/img/projet2/Images10.jpeg" target="_blank">
-  <img src="/img/projet2/Images10.jpeg" alt="Image 10" class="zoomable">
-</a>
-            <br> <a href="/img/projet2/Images11.jpeg" target="_blank">
-  <img src="/img/projet2/Images11.jpeg" alt="Image 11" class="zoomable">
-</a>
-          </section>
-<br>
-
-          <section>
-            <h2>8. Conclusion</h2>
-            <p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
-
-          <div class="frame-wrap">
-            <div class="points-frame">
-              <h3>Points clés à retenir</h3>
-              <ul>
-  <li><strong>Classement IMDb</strong> : Le rang correspond à la position officielle attribuée à chaque film dans le classement <em>Top 250</em> d’IMDb. Il s’agit d’un indicateur de popularité et de reconnaissance établi à partir des évaluations des utilisateurs.</li>
-
-  <li><strong>Encodage UTF-8</strong> : L’exportation des données s’effectue en utilisant l’encodage UTF-8, garantissant une compatibilité optimale avec les caractères spéciaux et facilitant l’interopérabilité lors du traitement ou du partage des fichiers.</li>
-
-  <li><strong>Maintenance</strong> : Étant donné que la structure interne du site IMDb peut évoluer au fil du temps, le code de collecte doit être maintenu et ajusté régulièrement afin d’assurer la continuité et la fiabilité de l’extraction.</li>
-
-  <li><strong>Chargement partiel</strong> : Le site IMDb met en œuvre un mécanisme de chargement dynamique qui n’expose qu’une portion limitée du contenu dans le code HTML statique initial. Par conséquent, l’utilisation de bibliothèques telles que <em>BeautifulSoup</em> ne permet d’extraire que les premiers éléments disponibles. Il est donc nécessaire de compléter l’analyse par une méthode adaptée au contenu généré dynamiquement, afin de garantir une récupération exhaustive des données.</li>
-</ul>
-
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div>
-          <button class="btn secondary" onclick="window.location.href='/projets/index.html'">← Retour</button>
-        </div>
-        <div class="footer-btns">
-          <button class="btn" id="btn-download">Télécharger extrait CSV</button>
-          <button class="btn" id="btn-analyse">Consulter l’analyse complète du Top 250 IMDb</button>
-        </div>
-      </footer>
+    <a class="navbar-brand" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{{ "/" | relative_url }}">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/about" | relative_url }}">À propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/projets" | relative_url }}">Projets</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/education" | relative_url }}">Éducation</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/experience" | relative_url }}">Expérience</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/cv" | relative_url }}">CV</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ "/contact" | relative_url }}">Contact</a></li>
+      </ul>
     </div>
   </div>
-
-  <!-- aside flottant -->
-  <aside>
-    <div class="small">Détails rapides</div>
-    <div class="card">
-      <p><strong>Remarques légales :</strong><br>Données conformes aux conditions d’utilisation d’IMDb. La liste intégrale du Top 250 est disponible sur demande.</p>
-      <p class="aside-contact">
-        <button class="btn" id="btn-contact">Contactez-moi</button>
-      </p>
-    </div>
-  </aside>
-
-  <script>
-    document.getElementById('btn-contact').addEventListener('click', function(){
-      window.location.href = '/contact.html';
-    });
-    document.getElementById('btn-download').addEventListener('click', function(){
-      const raw = '/assets/imdb_top250_partie des données.csv';
-      const url = encodeURI(raw);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'imdb_top250_extrait.csv';
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    });
-    document.getElementById('btn-analyse').addEventListener('click', function(){
-      window.location.href = '/projets_posts/Analyse_Imdb_top250.html';
-    });
-  </script>
-</body>
-</html>
+</nav>
 
 
 
