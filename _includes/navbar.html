@@ -3,23 +3,22 @@
   --navbar-height: 70px;
 }
 
-/* Ajoute de l’espace en haut du body pour éviter que le contenu soit caché sous la navbar */
+/* Ajoute de l’espace en haut du body pour éviter que le contenu ne passe sous la navbar */
 body {
   margin: 0;
-  padding-top: var(--navbar-height); /* Compense la navbar fixe */
+  padding-top: var(--navbar-height); 
 }
 
-/* NAVBAR FIXE EN HAUT */
+/* NAVBAR FIXE */
 #mainNav {
-  position: fixed !important;
+  position: fixed;       /* Fixée */
   top: 0;
   left: 0;
   right: 0;
   height: var(--navbar-height);
-  background: linear-gradient(135deg, #9333ea, #3b82f6) !important;
-  z-index: 9999;
+  background: linear-gradient(135deg, #9333ea, #3b82f6);
+  z-index: 10000;        /* Toujours au-dessus */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
 }
 
 /* Style du texte */
@@ -32,13 +31,6 @@ body {
 #mainNav .nav-link:hover {
   color: #e0e0ff !important;
   text-decoration: underline;
-}
-
-/* Empêche tout script JS de cacher ou animer la navbar */
-.affix,
-.navbar-shrink {
-  position: fixed !important;
-  top: 0 !important;
 }
 </style>
 
