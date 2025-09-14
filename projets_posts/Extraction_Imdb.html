@@ -88,9 +88,11 @@
       z-index: 100;
     }
     aside .card {
-      margin-top: 20px;
-      padding: 16px;
-    }
+  max-height: 300px;   /* limite la hauteur */
+  overflow-y: auto;    /* scroll interne si trop de contenu */
+  padding: 16px;       /* un padding plus petit */
+}
+
     .aside-contact { margin-top:10px; display:block; text-align:left; }
   </style>
 </head>
@@ -113,7 +115,62 @@
             <p class="small">Note : Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement dans un cadre éducatif. Le script complet n’est pas publié ici pour respecter les conditions d’utilisation. Contactez-moi si vous souhaitez discuter du code.</p>
           </section>
 
-          <!-- (autres sections inchangées, je n’ai pas supprimé ton contenu) -->
+         <section>
+            <h2>2. Environnement et bibliothèques utilisées</h2>
+            <ul>
+              <li><strong>Requests</strong> : envoyer des requêtes HTTP.</li>
+              <li><strong>BeautifulSoup (bs4)</strong> : parser le HTML et extraire les données.</li>
+              <li><strong>Pandas</strong> : structurer et manipuler les données.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>3. Envoi de la requête HTTP</h2>
+            <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+  <img src="/img/projet2/Images1.jpeg" alt="Image 1" width="600">
+  <p></p>
+  <br><img src="/img/projet2/image2.jpeg" alt="Image 2" width="600">
+  <p></p>
+  <br><img src="/img/projet2/Images3.jpeg" alt="Image 3" width="600">
+</div>
+
+          </section>
+<br>
+          <section>
+            <h2>4. Navigation dans le HTML</h2>
+            <p>Avant d’extraire les données, inspectez la structure HTML de la page (outil Inspecter). Identifiez les balises et classes contenant les titres, notes et liens.</p>
+
+            <br><img src="/img/projet2/Images4.jpeg" alt="Image 4" width="400">
+          </section>
+<br>
+          <section>
+            <h2>5. Extraction avec BeautifulSoup</h2>
+            <p>Exemples d’approche avec BeautifulSoup :</p>
+            <br><img src="/img/projet2/Images5.jpeg" alt="Image 5" width="400">
+
+            <br><img src="/img/projet2/Images6.jpeg" alt="Image 6" width="400">
+            <br><img src="/img/projet2/Images7.jpeg" alt="Image 7" width="400">
+            <br><img src="/img/projet2/Images8.jpeg" alt="Image 8" width="400">
+          </section>
+<br>
+          <section>
+            <h2>6. Structuration des données</h2>
+            <p>Les données extraites sont stockées dans un DataFrame Pandas pour faciliter l’analyse et la vérification.</p>
+
+            <br><img src="/img/projet2/Images9.jpeg" alt="Image 9" width="400">
+
+            <p class="small">Le script complet n’est pas publié ici pour respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée illustre la méthodologie.</p>
+          </section>
+<br>
+          <section>
+            <h2>7. Exportation des données (optionnel)</h2>
+            <p>Pour réutiliser les données, exportez-les en CSV avec <code>df.to_csv('imdb_top250.csv', encoding='utf-8', index=False)</code>.</p>
+
+            <br><img src="/img/projet2/Images10.jpeg" alt="Image 10" width="400">
+            <br><img src="/img/projet2/Images11.jpeg" alt="Image 11" width="400">
+          </section>
+<br>
 
           <section>
             <h2>8. Conclusion</h2>
@@ -123,13 +180,15 @@
               <div class="points-frame">
                 <h3>Points clés à retenir</h3>
                 <ul>
-                  <li><strong>Classement IMDb (Rank)</strong> : position officielle dans le Top 250.</li>
-                  <li><strong>Importance de l’encodage UTF-8</strong> lors de l’export CSV.</li>
-                  <li><strong>Chargement partiel</strong> : IMDb charge une partie du contenu dynamiquement.</li>
-                  <li><strong>Réalité du web scraping</strong> : la structure HTML change → maintenance régulière.</li>
-                </ul>
-                <p class="small">Analyse complète : <a href="/projets_posts/Analyse_Imdb_top250.html">Lien</a></p>
-                <p class="small"><a href="#" id="download-csv">Télécharger extrait csv</a></p>
+  <li><strong>Classement IMDb</strong> : Le rang correspond à la position officielle attribuée à chaque film dans le classement <em>Top 250</em> d’IMDb. Il s’agit d’un indicateur de popularité et de reconnaissance établi à partir des évaluations des utilisateurs.</li>
+
+  <li><strong>Encodage UTF-8</strong> : L’exportation des données s’effectue en utilisant l’encodage UTF-8, garantissant une compatibilité optimale avec les caractères spéciaux et facilitant l’interopérabilité lors du traitement ou du partage des fichiers.</li>
+
+  <li><strong>Maintenance</strong> : Étant donné que la structure interne du site IMDb peut évoluer au fil du temps, le code de collecte doit être maintenu et ajusté régulièrement afin d’assurer la continuité et la fiabilité de l’extraction.</li>
+
+  <li><strong>Chargement partiel</strong> : Le site IMDb met en œuvre un mécanisme de chargement dynamique qui n’expose qu’une portion limitée du contenu dans le code HTML statique initial. Par conséquent, l’utilisation de bibliothèques telles que <em>BeautifulSoup</em> ne permet d’extraire que les premiers éléments disponibles. Il est donc nécessaire de compléter l’analyse par une méthode adaptée au contenu généré dynamiquement, afin de garantir une récupération exhaustive des données.</li>
+</ul>
+
               </div>
             </div>
           </section>
@@ -143,7 +202,7 @@
         </div>
         <div class="footer-btns">
           <button class="btn" id="btn-download">Télécharger extrait csv</button>
-          <button class="btn" id="btn-analyse">Analyse du csv entier</button>
+          <button class="btn" id="btn-analyse">Consulter l’analyse complète du Top 250 IMDb</button>
         </div>
       </footer>
     </div>
@@ -153,8 +212,7 @@
   <aside>
     <div class="small">Détails rapides</div>
     <div class="card">
-      <p><strong>Stack:</strong><br>Python — Requests / BeautifulSoup / Pandas</p>
-      <p><strong>Remarques légales:</strong><br>Respect des conditions d'utilisation d'IMDb.</p>
+      <p><strong>Remarques légales:</strong><br>Données conformes aux conditions d’utilisation d’IMDb. La liste intégrale du Top 250 est disponible sur demande.</p>
       <p class="aside-contact">
         <button class="btn" id="btn-contact">Contactez-moi</button>
       </p>
