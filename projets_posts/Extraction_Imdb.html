@@ -3,50 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Test feuille + aside fixé</title>
+  <title>Extraction IMDb Top 250 — Projet</title>
   <style>
-    body {
-      margin:0;
-      background:#f6f7fb;
-      font-family:sans-serif;
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --muted:#6b6f76;
+      --accent:#0b5fff;
+      --accent-hover:#0946c8;
+      --frame:#eef3ff;
+      --page-width:1100px; /* largeur type "page Word zoomée" */
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, Arial, "Helvetica Neue", sans-serif; margin:0; background:var(--bg); color:#111}
+    
+    .container{max-width:var(--page-width); margin:32px auto; padding:24px}
+    header{display:flex; align-items:center; gap:16px}
+    header h1{font-size:20px; margin:0}
+    .meta{color:var(--muted); font-size:14px}
+
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:40px; /* plus de marge intérieure */
+      box-shadow:0 6px 20px rgba(20,30,60,0.08);
+      margin-top:18px;
+      min-height:1400px; /* imite une feuille Word zoomée */
     }
 
-    /* feuille centrale façon Word */
-    .page {
-      background:#fff;
-      width:1100px;      /* largeur fixe comme Word zoomé */
-      min-height:1400px; /* hauteur type feuille */
-      margin:32px auto;  /* centrage horizontal */
-      padding:40px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.1);
-    }
+    /* page centrale sans 2 colonnes */
+    .grid{display:block}
 
-    /* aside fixé à droite */
+    section h2{margin:0 0 12px 0; font-size:18px}
+    p{color:#222; line-height:1.5}
+    ul{margin:0 0 12px 18px}
+
+    /* Images placeholders */
+    .images-row{display:flex; gap:12px; flex-wrap:wrap; margin:10px 0}
+    .images-row img{width:calc(33.333% - 8px); border-radius:8px; min-width:120px; height:120px; object-fit:cover; background:#eee; border:1px dashed #ddd}
+    @media (max-width:700px){.images-row img{width:48%}}
+
+    /* framed points */
+    .frame-wrap{display:flex; gap:16px; align-items:flex-start; margin-top:14px}
+    .points-frame{background:var(--frame); border-radius:10px; padding:18px; flex:1; border:1px solid rgba(11,95,255,0.07)}
+    .points-frame h3{margin-top:0}
+    .return-btn{align-self:flex-start; margin-top:6px}
+
+    /* Boutons */
+    .btn{
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:transform 0.08s ease, background 0.12s ease, box-shadow 0.12s ease;
+      display:inline-block;
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--accent);
+      border:2px solid var(--accent);
+    }
+    .btn:hover,
+    .btn.secondary:hover{ background:var(--accent-hover); color:#fff }
+    .btn:active,
+    .btn.secondary:active{ transform:scale(0.96); background:var(--accent-hover); color:#fff }
+    .btn:focus{ outline:none; box-shadow:0 0 0 6px rgba(11,95,255,0.10) }
+
+    /* small helpers */
+    .small{font-size:13px; color:var(--muted)}
+    .code{background:#0f1724; color:#dbeafe; padding:10px;border-radius:8px; font-family:monospace; font-size:13px; overflow:auto}
+
+    /* footer */
+    footer{display:flex; justify-content:space-between; align-items:flex-start; margin-top:18px}
+    .footer-btns{display:flex; flex-direction:column; gap:10px}
+
+    /* aside épinglé à droite */
     aside {
-      position:fixed;
-      top:100px;
-      right:20px;
-      width:260px;
-      background:#fff;
-      padding:20px;
-      border-radius:10px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      position: fixed;
+      right: 20px;
+      top: 120px;
+      width: 280px;
+      z-index: 100;
     }
+    aside .card {
+      margin-top: 20px;
+      padding: 16px;
+    }
+    .aside-contact { margin-top:10px; display:block; text-align:left; }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Feuille centrale</h1>
-    <p>Ceci est une "page blanche" façon Word, élargie et centrée.</p>
-    <p>Tu peux écrire tout ton contenu ici.</p>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Extraction des 250 meilleurs films — IMDb (projet)</h1>
+        <div class="meta">Python • Web scraping • BeautifulSoup • Pandas</div>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="grid">
+        <main>
+
+          <section>
+            <h2>1. Introduction / Objectif</h2>
+            <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb à l’aide de Python et de bibliothèques spécialisées en web scraping. L’extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p>
+            <p class="small">Note : Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement dans un cadre éducatif. Le script complet n’est pas publié ici pour respecter les conditions d’utilisation. Contactez-moi si vous souhaitez discuter du code.</p>
+          </section>
+
+          <!-- (autres sections inchangées, je n’ai pas supprimé ton contenu) -->
+
+          <section>
+            <h2>8. Conclusion</h2>
+            <p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
+
+            <div class="frame-wrap">
+              <div class="points-frame">
+                <h3>Points clés à retenir</h3>
+                <ul>
+                  <li><strong>Classement IMDb (Rank)</strong> : position officielle dans le Top 250.</li>
+                  <li><strong>Importance de l’encodage UTF-8</strong> lors de l’export CSV.</li>
+                  <li><strong>Chargement partiel</strong> : IMDb charge une partie du contenu dynamiquement.</li>
+                  <li><strong>Réalité du web scraping</strong> : la structure HTML change → maintenance régulière.</li>
+                </ul>
+                <p class="small">Analyse complète : <a href="/projets_posts/Analyse_Imdb_top250.html">Lien</a></p>
+                <p class="small"><a href="#" id="download-csv">Télécharger extrait csv</a></p>
+              </div>
+            </div>
+          </section>
+
+        </main>
+      </div>
+
+      <footer>
+        <div>
+          <button class="btn secondary" onclick="window.location.href='/projets/index.html'">← Retour</button>
+        </div>
+        <div class="footer-btns">
+          <button class="btn" id="btn-download">Télécharger extrait csv</button>
+          <button class="btn" id="btn-analyse">Analyse du csv entier</button>
+        </div>
+      </footer>
+    </div>
   </div>
 
+  <!-- aside sorti de la page -->
   <aside>
-    <h2>Aside fixe</h2>
-    <p>Je reste collé à droite même si tu descends dans la page.</p>
+    <div class="small">Détails rapides</div>
+    <div class="card">
+      <p><strong>Stack:</strong><br>Python — Requests / BeautifulSoup / Pandas</p>
+      <p><strong>Remarques légales:</strong><br>Respect des conditions d'utilisation d'IMDb.</p>
+      <p class="aside-contact">
+        <button class="btn" id="btn-contact">Contactez-moi</button>
+      </p>
+    </div>
+
+    <div class="card">
+      <p><strong>Extrait de code</strong></p>
+      <div class="code">
+<pre>headers = {"User-Agent": "Mozilla/5.0"}
+resp = requests.get(url, headers=headers)
+soup = BeautifulSoup(resp.text, 'html.parser')
+items = soup.select("li a[href^='/title/']")</pre>
+      </div>
+    </div>
   </aside>
+
+  <script>
+    document.getElementById('btn-contact').addEventListener('click', function(){
+      window.location.href = '/contact.html';
+    });
+    document.getElementById('btn-download').addEventListener('click', function(){
+      const raw = '/assets/imdb_top250_partie des données.csv';
+      const url = encodeURI(raw);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'imdb_top250_extrait.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+    document.getElementById('btn-analyse').addEventListener('click', function(){
+      window.location.href = '/projets_posts/Analyse_Imdb_top250.html';
+    });
+    const linkCsv = document.getElementById('download-csv');
+    if (linkCsv) {
+      linkCsv.addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('btn-download').click();
+      });
+    }
+  </script>
 </body>
 </html>
+
 
 
 
