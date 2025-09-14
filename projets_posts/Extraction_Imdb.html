@@ -141,6 +141,18 @@
   margin-bottom: 16px;
   display: block;
 }
+img.zoomable {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.25s ease;
+  cursor: zoom-in;
+}
+
+img.zoomable:hover {
+  transform: scale(1.5); /* agrandissement */
+  z-index: 10;
+  position: relative;
+}
 
 </style>
 
@@ -175,16 +187,16 @@
             <h2>3. Envoi de la requête HTTP</h2>
             <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-  <a href="/img/projet2/Images1.jpeg" target="_blank">
-  <img src="/img/projet2/Images1.jpeg" alt="Image 1">
+  <a href="/img/projet2/Images1.jpeg" target="_blank" class="lightbox">
+  <img src="/img/projet2/Images1.jpeg" alt="Image 1" class="zoomable">
 </a>
   <br>
 <a href="/img/projet2/image2.jpeg" target="_blank">
-  <img src="/img/projet2/image2.jpeg" alt="Image 2">
+  <img src="/img/projet2/image2.jpeg" alt="Image 2" class="zoomable">
 </a>
   <br>
 <a href="/img/projet2/Images3.jpeg" target="_blank">
-  <br><img src="/img/projet2/Images3.jpeg" alt="Image 3">
+  <br><img src="/img/projet2/Images3.jpeg" alt="Image 3" class="zoomable">
 </a>
 </div>
 
