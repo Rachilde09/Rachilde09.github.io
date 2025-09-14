@@ -46,9 +46,11 @@ body {
   text-decoration: underline;
 }
 
-/* Pour éviter que le dernier bouton "Contact" soit coupé */
-.navbar-nav {
-  flex-wrap: wrap;  /* passe à la ligne si trop serré */
+#mainNav .navbar-nav {
+  display: flex;
+  flex-wrap: wrap;           /* autorise un retour à la ligne */
+  justify-content: flex-end; /* colle les liens à droite */
+  width: 100%;               /* prend toute la largeur */
 }
 
 
