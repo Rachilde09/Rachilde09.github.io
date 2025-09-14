@@ -7,49 +7,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
+    :root {
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #333;
+      --accent: #2563eb;
+      --code-bg: #1e293b;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e5e7eb;
+      --accent: #3b82f6;
+      --code-bg: #0f172a;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      background-color: #f5f7fa;
-      color: #333;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
 
     header {
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-      color: white;
-      padding: 2.5rem;
       text-align: center;
+      padding: 4rem 2rem 3rem;
+      background: linear-gradient(135deg, var(--accent), #1e40af);
+      color: white;
     }
 
     header h1 {
       margin: 0;
-      font-size: 2.4rem;
+      font-size: 2.6rem;
     }
 
-    main {
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .container {
       max-width: 1100px;
       margin: 2rem auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
       padding: 0 1rem;
     }
 
-    section, aside {
-      background: white;
+    .card {
+      background: var(--card);
       border-radius: 12px;
       padding: 1.5rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: background 0.3s, color 0.3s;
     }
 
-    section h2, aside h2 {
+    .card h2 {
       margin-top: 0;
-      color: #2563eb;
+      color: var(--accent);
     }
 
     .code {
-      background: #1e293b;
+      background: var(--code-bg);
       color: #e5e7eb;
       padding: 1rem;
       border-radius: 8px;
@@ -59,20 +80,25 @@
     }
 
     .highlight {
-      border-left: 4px solid #3b82f6;
+      border-left: 4px solid var(--accent);
       padding-left: 1rem;
-      background: #f0f9ff;
+      background: rgba(37,99,235,0.05);
+      border-radius: 8px;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #f1f5f9;
-      margin-top: 2rem;
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 2rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .timeline div {
+      margin-bottom: 1.5rem;
     }
 
     button {
-      background: #2563eb;
+      background: var(--accent);
       color: white;
       border: none;
       padding: 0.7rem 1.5rem;
@@ -83,38 +109,64 @@
       transition: background 0.3s ease;
     }
 
-    button.secondary {
-      background: #64748b;
-    }
-
     button:hover {
       background: #1e40af;
     }
 
-    canvas {
-      max-width: 100%;
-      margin-top: 1rem;
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--card);
+      margin-top: 2rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    footer a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Extraction des 250 meilleurs films IMDb</h1>
-    <p>Projet Data Science – Web Scraping & Analyse</p>
+    <p>Projet Data Science – Web Scraping, Analyse et Visualisation</p>
   </header>
 
-  <main>
-    <section>
+  <button class="theme-toggle" id="toggle-theme">🌙</button>
+
+  <div class="container">
+    <div class="card">
       <h2>🎯 Objectif</h2>
       <p>Automatiser l’extraction des 250 meilleurs films sur IMDb afin de créer un jeu de données exploitable pour l’analyse et la visualisation.</p>
-      
-      <h2>⚙️ Méthodologie</h2>
-      <ul>
-        <li>Scraping des pages IMDb avec <strong>Requests</strong> et <strong>BeautifulSoup</strong>.</li>
-        <li>Nettoyage et structuration des données.</li>
-        <li>Export en CSV puis analyse exploratoire.</li>
-      </ul>
+    </div>
 
+    <div class="card">
+      <h2>⚙️ Méthodologie</h2>
+      <div class="timeline">
+        <div>📡 Scraping des pages IMDb avec <strong>Requests</strong> & <strong>BeautifulSoup</strong></div>
+        <div>🧹 Nettoyage et structuration des données</div>
+        <div>📊 Export en CSV et analyse exploratoire</div>
+        <div>📈 Visualisation des tendances cinéma</div>
+      </div>
+    </div>
+
+    <div class="card">
       <h2>📜 Extrait de code</h2>
       <div class="code">
 <pre>
@@ -124,33 +176,45 @@ soup = BeautifulSoup(resp.text, 'html.parser')
 items = soup.select("li a[href^='/title/']")
 </pre>
       </div>
+    </div>
 
+    <div class="card">
       <h2>📊 Exemple de visualisation</h2>
       <canvas id="chart"></canvas>
-    </section>
+    </div>
 
-    <aside>
-      <div class="highlight">
-        <h2>📌 Points clés</h2>
-        <ul>
-          <li>Automatisation de la collecte de données.</li>
-          <li>Export en CSV pour réutilisation rapide.</li>
-          <li>Analyse et visualisation des tendances cinéma.</li>
-        </ul>
-      </div>
+    <div class="card highlight">
+      <h2>📌 Points clés à retenir</h2>
+      <ul>
+        <li>Automatisation de la collecte de données</li>
+        <li>Export en CSV réutilisable</li>
+        <li>Visualisation claire des tendances</li>
+      </ul>
+    </div>
 
-      <div style="margin-top:1.5rem;text-align:center;">
-        <button id="btn-contact">Me contacter</button>
-        <button id="btn-download">Télécharger CSV</button>
-      </div>
-    </aside>
-  </main>
+    <div class="card" style="text-align:center;">
+      <button id="btn-contact">Me contacter</button>
+      <button id="btn-download">Télécharger CSV</button>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2025 – Portfolio Rachilde Angor</p>
+    <a href="https://github.com/Rachilde09" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/ton-profil" target="_blank">LinkedIn</a>
+    <a href="mailto:votre.email@example.com">Email</a>
   </footer>
 
   <script>
+    // Mode sombre / clair
+    const toggleBtn = document.getElementById('toggle-theme');
+    toggleBtn.addEventListener('click', ()=>{
+      document.body.dataset.theme = 
+        document.body.dataset.theme === "dark" ? "" : "dark";
+      toggleBtn.textContent = 
+        document.body.dataset.theme === "dark" ? "☀️" : "🌙";
+    });
+
     // Boutons
     document.getElementById('btn-contact').addEventListener('click', ()=>{
       window.location.href = 'mailto:votre.email@example.com?subject=Projet IMDb Top250';
@@ -166,7 +230,7 @@ items = soup.select("li a[href^='/title/']")
       a.remove();
     });
 
-    // Graphique Chart.js
+    // Chart.js
     const ctx = document.getElementById('chart');
     new Chart(ctx, {
       type: 'bar',
@@ -188,4 +252,5 @@ items = soup.select("li a[href^='/title/']")
   </script>
 </body>
 </html>
+
 
