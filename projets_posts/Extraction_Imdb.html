@@ -149,7 +149,7 @@ img.zoomable {
 }
 
 img.zoomable:hover {
-  transform: scale(1.5); /* agrandissement */
+  transform: scale(1.0); /* agrandissement */
   z-index: 10;
   position: relative;
 }
@@ -187,7 +187,7 @@ img.zoomable:hover {
             <h2>3. Envoi de la requête HTTP</h2>
             <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-  <a href="/img/projet2/Images1.jpeg" target="_blank" class="lightbox">
+  <a href="/img/projet2/Images1.jpeg" target="_blank">
   <img src="/img/projet2/Images1.jpeg" alt="Image 1" class="zoomable">
 </a>
   <br>
@@ -196,7 +196,7 @@ img.zoomable:hover {
 </a>
   <br>
 <a href="/img/projet2/Images3.jpeg" target="_blank">
-  <br><img src="/img/projet2/Images3.jpeg" alt="Image 3" class="zoomable">
+  <img src="/img/projet2/Images3.jpeg" alt="Image 3" class="zoomable">
 </a>
 </div>
 
@@ -205,25 +205,36 @@ img.zoomable:hover {
           <section>
             <h2>4. Navigation dans le HTML</h2>
             <p>Avant d’extraire les données, inspectez la structure HTML de la page (outil Inspecter). Identifiez les balises et classes contenant les titres, notes et liens.</p>
-
-            <br><img src="/img/projet2/Images4.jpeg" alt="Image 4">
+            <br>
+           <a href="/img/projet2/Images4.jpeg" target="_blank">
+  <img src="/img/projet2/Images4.jpeg" alt="Image 4" class="zoomable">
+</a>
           </section>
 <br>
           <section>
             <h2>5. Extraction avec BeautifulSoup</h2>
             <p>Exemples d’approche avec BeautifulSoup :</p>
-            <br><img src="/img/projet2/Images5.jpeg" alt="Image 5">
-
-            <br><img src="/img/projet2/Images6.jpeg" alt="Image 6">
-            <br><img src="/img/projet2/Images7.jpeg" alt="Image 7">
-            <br><img src="/img/projet2/Images8.jpeg" alt="Image 8">
+          <br> <a href="/img/projet2/Images5.jpeg" target="_blank">
+  <img src="/img/projet2/Images5.jpeg" alt="Image 5" class="zoomable">
+</a>
+           <br> <a href="/img/projet2/Images6.jpeg" target="_blank">
+  <img src="/img/projet2/Images6.jpeg" alt="Image 6" class="zoomable">
+</a>
+           <br> <a href="/img/projet2/Images7.jpeg" target="_blank">
+  <img src="/img/projet2/Images7.jpeg" alt="Image 7" class="zoomable">
+</a>
+           <br> <a href="/img/projet2/Images8.jpeg" target="_blank">
+  <img src="/img/projet2/Images8.jpeg" alt="Image 8" class="zoomable">
+</a>
+          
           </section>
 <br>
           <section>
             <h2>6. Structuration des données</h2>
             <p>Les données extraites sont stockées dans un DataFrame Pandas pour faciliter l’analyse et la vérification.</p>
-
-            <br><img src="/img/projet2/Images9.jpeg" alt="Image 9">
+<br> <a href="/img/projet2/Images9.jpeg" target="_blank">
+  <img src="/img/projet2/Images9.jpeg" alt="Image 9" class="zoomable">
+</a>
 
             <p class="small">Le script complet n’est pas publié ici pour respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée illustre la méthodologie.</p>
           </section>
@@ -231,9 +242,12 @@ img.zoomable:hover {
           <section>
             <h2>7. Exportation des données (optionnel)</h2>
             <p>Pour réutiliser les données, exportez-les en CSV avec <code>df.to_csv('imdb_top250.csv', encoding='utf-8', index=False)</code>.</p>
-
-            <br><img src="/img/projet2/Images10.jpeg" alt="Image 10">
-            <br><img src="/img/projet2/Images11.jpeg" alt="Image 11">
+<br> <a href="/img/projet2/Images10.jpeg" target="_blank">
+  <img src="/img/projet2/Images10.jpeg" alt="Image 10" class="zoomable">
+</a>
+            <br> <a href="/img/projet2/Images11.jpeg" target="_blank">
+  <img src="/img/projet2/Images11.jpeg" alt="Image 11" class="zoomable">
+</a>
           </section>
 <br>
 
@@ -245,11 +259,15 @@ img.zoomable:hover {
             <div class="points-frame">
               <h3>Points clés à retenir</h3>
               <ul>
-                <li><strong>Classement IMDb</strong> : Le rang correspond à la position officielle attribuée à chaque film dans le classement <em>Top 250</em> d’IMDb.</li>
-                <li><strong>Encodage UTF-8</strong> : L’exportation des données s’effectue en UTF-8 pour garantir la compatibilité des caractères.</li>
-                <li><strong>Maintenance</strong> : La structure d’IMDb pouvant évoluer, le code doit être régulièrement ajusté.</li>
-                <li><strong>Chargement partiel</strong> : IMDb charge du contenu dynamiquement ; BeautifulSoup ne récupère que les éléments statiques. Il faut compléter par une méthode adaptée au contenu dynamique.</li>
-              </ul>
+  <li><strong>Classement IMDb</strong> : Le rang correspond à la position officielle attribuée à chaque film dans le classement <em>Top 250</em> d’IMDb. Il s’agit d’un indicateur de popularité et de reconnaissance établi à partir des évaluations des utilisateurs.</li>
+
+  <li><strong>Encodage UTF-8</strong> : L’exportation des données s’effectue en utilisant l’encodage UTF-8, garantissant une compatibilité optimale avec les caractères spéciaux et facilitant l’interopérabilité lors du traitement ou du partage des fichiers.</li>
+
+  <li><strong>Maintenance</strong> : Étant donné que la structure interne du site IMDb peut évoluer au fil du temps, le code de collecte doit être maintenu et ajusté régulièrement afin d’assurer la continuité et la fiabilité de l’extraction.</li>
+
+  <li><strong>Chargement partiel</strong> : Le site IMDb met en œuvre un mécanisme de chargement dynamique qui n’expose qu’une portion limitée du contenu dans le code HTML statique initial. Par conséquent, l’utilisation de bibliothèques telles que <em>BeautifulSoup</em> ne permet d’extraire que les premiers éléments disponibles. Il est donc nécessaire de compléter l’analyse par une méthode adaptée au contenu généré dynamiquement, afin de garantir une récupération exhaustive des données.</li>
+</ul>
+
             </div>
           </div>
         </section>
