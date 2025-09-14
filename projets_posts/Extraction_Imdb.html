@@ -108,9 +108,9 @@
             <h2>3. Envoi de la requête HTTP</h2>
             <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
 <div style="display:flex; gap:10px; flex-wrap:wrap;">
-  <img src="/img/projet2/Images1.png" alt="Image 1" width="300">
-  <br><img src="/img/projet2/image2.png" alt="Image 2" width="300">
-  <br><img src="/img/projet2/Images3.png" alt="Image 3" width="300">
+  <img src="/img/projet2/Images1.jpeg" alt="Image 1" width="300">
+  <br><img src="/img/projet2/image2.jpeg" alt="Image 2" width="300">
+  <br><img src="/img/projet2/Images3.jpeg" alt="Image 3" width="300">
 </div>
 
           </section>
@@ -119,43 +119,24 @@
             <h2>4. Navigation dans le HTML</h2>
             <p>Avant d’extraire les données, inspectez la structure HTML de la page (outil Inspecter). Identifiez les balises et classes contenant les titres, notes et liens.</p>
 
-            <div class="code" aria-hidden="false">
-<pre>headers = {"User-Agent": "Mozilla/5.0"}
-resp = requests.get(url, headers=headers)
-soup = BeautifulSoup(resp.text, 'html.parser')
-items = soup.select("li a[href^='/title/']")</pre>
-            </div>
+            <br><img src="/img/projet2/Images4.jpeg" alt="Image 4" width="300">
           </section>
 
           <section>
             <h2>5. Extraction avec BeautifulSoup</h2>
             <p>Exemples d’approche avec BeautifulSoup :</p>
-            <div class="code" aria-hidden="false">
-<pre># Sélection d'éléments
-soup.select("li a[href^='/title/']")
-# Récupération d'une span voisine
-item.find_next("span")
-# Note IMDb
-item.find_next("span", class_="ipc-rating-star__rating")</pre>
-            </div>
+            <br><img src="/img/projet2/Images5.jpeg" alt="Image 5" width="300">
 
-            <!-- On conserve le cadre noir demandé (ne le supprime pas) -->
-            <div class="code" aria-hidden="false" style="margin-top:12px">
-<pre>headers = {"User-Agent": "Mozilla/5.0"}
-resp = requests.get(url, headers=headers)
-soup = BeautifulSoup(resp.text, 'html.parser')
-items = soup.select("li a[href^='/title/']")</pre>
-            </div>
+            <br><img src="/img/projet2/Images6.jpeg" alt="Image 6" width="300">
+            <br><img src="/img/projet2/Images7.jpeg" alt="Image 7" width="300">
+            <br><img src="/img/projet2/Images8.jpeg" alt="Image 8" width="300">
           </section>
 
           <section>
             <h2>6. Structuration des données</h2>
             <p>Les données extraites sont stockées dans un DataFrame Pandas pour faciliter l’analyse et la vérification.</p>
 
-            <div class="code" aria-hidden="false">
-<pre>df = pd.DataFrame(data)
-df.head()</pre>
-            </div>
+            <br><img src="/img/projet2/Images9.jpeg" alt="Image 9" width="300">
 
             <p class="small">Le script complet n’est pas publié ici pour respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée illustre la méthodologie.</p>
           </section>
@@ -164,9 +145,8 @@ df.head()</pre>
             <h2>7. Exportation des données (optionnel)</h2>
             <p>Pour réutiliser les données, exportez-les en CSV avec <code>df.to_csv('imdb_top250.csv', encoding='utf-8', index=False)</code>.</p>
 
-            <div class="code" aria-hidden="false">
-<pre>df.to_csv('imdb_top250_extrait.csv', encoding='utf-8', index=False)</pre>
-            </div>
+            <br><img src="/img/projet2/Images10.jpeg" alt="Image 10" width="300">
+            <br><img src="/img/projet2/Images11.jpeg" alt="Image 11" width="300">
           </section>
 
           <section>
