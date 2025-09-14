@@ -108,12 +108,44 @@
             <h2>3. Envoi de la requête HTTP</h2>
             <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
 
-            <!-- Remplacement des images par le cadre noir (sans titre) -->
+            
             <div class="code" aria-hidden="false">
-<pre>headers = {"User-Agent": "Mozilla/5.0"}
-resp = requests.get(url, headers=headers)
-soup = BeautifulSoup(resp.text, 'html.parser')
-items = soup.select("li a[href^='/title/']")</pre>
+<pre>#Importer les modules nécessaires
+from bs4 import BeautifulSoup
+import pandas as pd
+import requests
+import re
+</pre>
+            </div>
+            <div class="code" aria-hidden="false">
+<pre>#Accès au contenu html de la page web (par l'URL et l'objet soup)
+
+url = 'https://www.imdb.com/chart/top/'     #url de la page web
+response = requests.get(url)                #envoie de la requête HTTP GET vers l'url pour récupérer le contenu HTML de la page
+soup = BeautifulSoup(response.text, 'html.parser')  #BeautifulSoup reçoit la réponse(code HTML brut de la page IMDb en chaîne de caractères)
+
+#html.parser est l’outil intégré à Python qui sait lire et comprendre les balises HTML.Il indique à BeautifulSoup de lire le texte comme du html
+#Il convertit le HTML en objets manipulables (balises <title>, <h1>, <table>, etc.).
+
+print(response.status_code)  # 200 = succès
+</pre>
+            </div>
+            <div class="code" aria-hidden="false">
+<pre>url = "https://www.imdb.com/chart/top/"
+
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                  "AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/120.0.0.0 Safari/537.36"
+}
+
+response = requests.get(url, headers=headers)
+
+print(response.status_code)  # doit donner 200 si ça marche
+
+soup = BeautifulSoup(response.text, "html.parser")
+print(soup.title)  # test rapide : affiche le titre de la page
+</pre>
             </div>
           </section>
 
