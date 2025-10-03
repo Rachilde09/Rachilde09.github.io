@@ -201,8 +201,69 @@
 
     <div class="card">
       <main>
-        <!-- tes sections (Introduction, Environnement, etc.) ici -->
-        <!-- ... (je n’ai pas modifié le contenu, tu peux remettre tout ce que tu avais) -->
+        <section> 
+          <h2>1. Introduction / Objectif</h2> 
+          <p>Dans ce projet, l’objectif est d’extraire les informations relatives aux 250 films les mieux notés sur IMDb à l’aide de Python et de bibliothèques spécialisées en web scraping. L’extraction est réalisée dans un cadre éducatif et dans le respect des conditions d’utilisation d’IMDb.</p> 
+          <p class="small">Note : Les données utilisées proviennent d’IMDb et ont été exploitées exclusivement dans un cadre éducatif. Le script complet n’est pas publié ici pour respecter les conditions d’utilisation. Contactez-moi si vous souhaitez discuter du code.</p> 
+        </section>
+        <section> 
+          <h2>2. Environnement et bibliothèques utilisées</h2> 
+          <ul> 
+            <li><strong>Requests</strong> : envoyer des requêtes HTTP.</li> 
+            <li><strong>BeautifulSoup (bs4)</strong> : parser le HTML et extraire les données.</li> 
+            <li><strong>Pandas</strong> : structurer et manipuler les données.</li> 
+          </ul> 
+        </section>
+        <section> 
+          <h2>3. Envoi de la requête HTTP</h2> 
+          <p>IMDb bloque souvent les requêtes sans User-Agent (erreur 403). La solution consiste à ajouter un en-tête User-Agent pour simuler un navigateur.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;"> 
+            <a href="/img/projet2/Images1.jpeg" target="_blank"> 
+            <img src="/img/projet2/Images1.jpeg" alt="Image 1" class="zoomable"></a> 
+            
+            <br><a href="/img/projet2/image2.jpeg" target="_blank"> 
+              <img src="/img/projet2/image2.jpeg" alt="Image 2" class="zoomable"></a> 
+            
+            <br><a href="/img/projet2/Images3.jpeg" target="_blank"> 
+              <img src="/img/projet2/Images3.jpeg" alt="Image 3" class="zoomable"></a>
+          </div> 
+        </section>
+        <br> <section> <h2>4. Navigation dans le HTML</h2> 
+          <p>Avant d’extraire les données, inspectez la structure HTML de la page (outil Inspecter). Identifiez les balises et classes contenant les titres, notes et liens.</p> 
+          <br> <a href="/img/projet2/Images4.jpeg" target="_blank"> 
+            <img src="/img/projet2/Images4.jpeg" alt="Image 4" class="zoomable"></a> 
+        </section>
+        <br> <section> <h2>5. Extraction avec BeautifulSoup</h2> 
+          <p>Exemples d’approche avec BeautifulSoup :</p> 
+          <br> <a href="/img/projet2/Images5.jpeg" target="_blank"> 
+            <img src="/img/projet2/Images5.jpeg" alt="Image 5" class="zoomable"></a> 
+          <br> <a href="/img/projet2/Images6.jpeg" target="_blank"> <img src="/img/projet2/Images6.jpeg" alt="Image 6" class="zoomable"></a> 
+          <br> <a href="/img/projet2/Images7.jpeg" target="_blank"> <img src="/img/projet2/Images7.jpeg" alt="Image 7" class="zoomable"></a> 
+          <br> <a href="/img/projet2/Images8.jpeg" target="_blank"> <img src="/img/projet2/Images8.jpeg" alt="Image 8" class="zoomable"></a> 
+        </section>
+        <br> <section> <h2>6. Structuration des données</h2> 
+          <p>Les données extraites sont stockées dans un DataFrame Pandas pour faciliter l’analyse et la vérification.</p>
+          <br> <a href="/img/projet2/Images9.jpeg" target="_blank"> <img src="/img/projet2/Images9.jpeg" alt="Image 9" class="zoomable"></a> 
+          <p class="small">Le script complet n’est pas publié ici pour respecter les conditions d’utilisation d’IMDb. Seule une version simplifiée illustre la méthodologie.</p> 
+        </section>
+        <br> <section> <h2>7. Exportation des données (optionnel)</h2> <p>Pour réutiliser les données, exportez-les en CSV avec <code>df.to_csv('imdb_top250.csv', encoding='utf-8', index=False)</code></p>
+          <br> <a href="/img/projet2/Images10.jpeg" target="_blank"> <img src="/img/projet2/Images10.jpeg" alt="Image 10" class="zoomable"></a> 
+          <br> <a href="/img/projet2/Images11.jpeg" target="_blank"> <img src="/img/projet2/Images11.jpeg" alt="Image 11" class="zoomable"></a> 
+        </section>
+        <br> <section> <h2>8. Conclusion</h2> 
+          <p>L’extraction des 250 films les mieux notés d’IMDb a été réalisée avec succès. Les données sont prêtes pour une analyse exploratoire et une visualisation statistique.</p>
+          <div class="frame-wrap"> 
+            <div class="points-frame"> <h3>Points clés à retenir</h3> 
+              <ul> 
+                <li><strong>Classement IMDb</strong> : Le rang correspond à la position officielle attribuée à chaque film dans le classement <em>Top 250</em> d’IMDb. Il s’agit d’un indicateur de popularité et de reconnaissance établi à partir des évaluations des utilisateurs.</li> 
+                <li><strong>Encodage UTF-8</strong> : L’exportation des données s’effectue en utilisant l’encodage UTF-8, garantissant une compatibilité optimale avec les caractères spéciaux et facilitant l’interopérabilité lors du traitement ou du partage des fichiers.</li> 
+                <li><strong>Maintenance</strong> : Étant donné que la structure interne du site IMDb peut évoluer au fil du temps, le code de collecte doit être maintenu et ajusté régulièrement afin d’assurer la continuité et la fiabilité de l’extraction.</li> 
+                <li><strong>Chargement partiel</strong> : Le site IMDb met en œuvre un mécanisme de chargement dynamique qui n’expose qu’une portion limitée du contenu dans le code HTML statique initial. Par conséquent, l’utilisation de bibliothèques telles que <em>BeautifulSoup</em> ne permet d’extraire que les premiers éléments disponibles. Il est donc nécessaire de compléter l’analyse par une méthode adaptée au contenu généré dynamiquement, afin de garantir une récupération exhaustive des données.</li>
+              </ul> 
+            </div> 
+          </div> 
+        </section>
+      
       </main>
 
       <footer>
