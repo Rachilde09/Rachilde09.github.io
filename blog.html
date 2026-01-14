@@ -3,43 +3,26 @@ layout: default
 title: Blog
 ---
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog - Maintenance PC</title>
 <style>
-  /* Style de base */
   body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: white;
-    color: black;
+    background: white; /* <-- Blanc au lieu de noir */
+    color: black; /* Texte par défaut noir */
   }
 
-  h1, h2, h3 {
-    margin-bottom: 15px;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  /* Container général */
   .projects-container {
     max-width: 1100px;
     margin: 80px auto;
     padding: 40px;
-    background: #2c2c2c;
-    color: white;
+    background: #2c2c2c; /* Le cadre uniquement reste noir */
+    color: white; /* Texte à l'intérieur du cadre */
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
-  /* Filtres / catégories */
+
   .project-filters {
     display: flex;
     justify-content: center;
@@ -67,7 +50,6 @@ title: Blog
     box-shadow: 0 0 0 3px #9333ea inset;
   }
 
-  /* Galerie des articles */
   .project-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -81,7 +63,6 @@ title: Blog
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s ease;
-    cursor: pointer;
   }
 
   .project-item:hover {
@@ -103,42 +84,6 @@ title: Blog
     -webkit-text-fill-color: transparent;
   }
 
-  /* Article détaillé */
-  .article-detail {
-    background: #1e1e1e;
-    padding: 30px;
-    margin-top: 50px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    color: white;
-  }
-
-  .article-detail h2, .article-detail h3 {
-    color: #fff;
-  }
-
-  .article-detail ul {
-    margin-left: 20px;
-  }
-
-  .article-detail .tags {
-    margin-top: 20px;
-  }
-  .article-detail .tag {
-    display: inline-block;
-    background-color: #9333ea;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-right: 5px;
-    font-size: 0.9rem;
-  }
-
-  .article-detail a {
-    color: #3b82f6;
-    font-weight: bold;
-  }
-
   @media (max-width: 600px) {
     .filter-button {
       font-size: 0.9rem;
@@ -150,68 +95,42 @@ title: Blog
     }
   }
 </style>
-</head>
-<body>
 
-<div class="projects-container">
-  <h1>Blog Technique</h1>
-  <p>Découvrez mes pannes et réparations PC avec des articles détaillés.</p>
 
-  <!-- Filtres de catégories -->
-  <div class="project-filters">
-    <button class="filter-button active">Toutes</button>
-    <button class="filter-button">Batterie</button>
-    <button class="filter-button">Alimentation</button>
-    <button class="filter-button">Maintenance</button>
-  </div>
-
-  <!-- Galerie des articles -->
+  <!-- Galerie de projets -->
   <div class="project-gallery">
-    <!-- Article 1 -->
-    <a href="#article1" class="project-item">
-      <img src="https://via.placeholder.com/400x180.png?text=HP+x360+G2" alt="Panne 1">
-      <div class="project-title">Panne 1 : Changement de batterie HP x360 G2</div>
-    </a>
-
-    <!-- Tu peux ajouter d'autres articles ici -->
-  </div>
-
-  <!-- Article détaillé -->
-  <div class="article-detail" id="article1">
-    <h2>Panne 1 : Changement de batterie HP x360 G2</h2>
-    <p><strong>Date :</strong> 14 Janvier 2026</p>
-
-    <h3>Introduction</h3>
-    <p>Mon PC HP x360 310 G2 s'éteignait rapidement même avec la batterie chargée. J'ai décidé de remplacer la batterie pour résoudre le problème.</p>
     
-    <h3>Description du PC</h3>
-    <ul>
-      <li><strong>Modèle :</strong> HP x360 310 G2</li>
-      <li><strong>Type de batterie :</strong> K11</li>
-      <li><strong>Type de chargeur :</strong> 19.5V 3.33A</li>
-    </ul>
-
-    <h3>Analyse de la panne</h3>
-    <p>Le PC s'éteignait rapidement et l'indicateur de batterie variait de manière instable. Cela indiquait une batterie défectueuse ou une alimentation instable.</p>
-
-    <h3>Solution appliquée</h3>
-    <p>J'ai remplacé la batterie par une batterie neuve K11 compatible avec mon PC et testé avec mon chargeur d'origine 19.5V 3.33A. Après remplacement, le PC fonctionne correctement.</p>
-
-    <h3>Résultat final</h3>
-    <p>Le PC tient maintenant sa charge normalement et s'allume sans problème.</p>
-
-    <h3>Astuce / conseil</h3>
-    <p>Avant de changer la batterie, vérifier l’alimentation et les connecteurs pour s’assurer qu’il n’y a pas d’autres problèmes.</p>
-
-    <div class="tags">
-      <span class="tag">Batterie</span>
-      <span class="tag">HP x360</span>
-      <span class="tag">Maintenance</span>
+    <!--Article 1 - Maintenane & dépannage -->
+    <div class="project-item" >
+      <a href="/projets_posts/Pannes_répertoriées.html" target="_blank">
+        <img src="/img/projet3/maintenance.webp" alt="Pannes répertoriées">
+        <div class="project-title">Pannes répertoriées</div>
+      </a>
     </div>
 
-    <p><a href="#top">Retour en haut</a></p>
+
   </div>
 </div>
 
-</body>
-</html>
+<script>
+  const buttons = document.querySelectorAll('.filter-button');
+  const items = document.querySelectorAll('.project-item');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+
+      // Active button styling
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      items.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
