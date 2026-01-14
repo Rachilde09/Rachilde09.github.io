@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Pannes répertoriées - Projet3</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+    }
+
+    .maintenance {
+      padding: 40px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .maintenance h2 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      color: #222;
+    }
+
+    .section-desc {
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .incident-card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+    }
+
+    .incident-header h3 {
+      font-size: 22px;
+      margin-bottom: 5px;
+      color: #111;
+    }
+
+    .status {
+      color: #2e8b57;
+      font-size: 14px;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .date {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .incident-content {
+      display: flex;
+      gap: 25px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .incident-image img {
+      width: 260px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .incident-details {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .incident-details h4 {
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .incident-details ul {
+      padding-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .incident-details li {
+      margin-bottom: 6px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-left: 0;
+    }
+
+    .skills li {
+      background-color: #e9f2ff;
+      color: #004aad;
+      padding: 6px 12px;
+      border-radius: 20px;
+      list-style: none;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="maintenance">
+  <h2>Maintenance & Dépannage</h2>
+  <p class="section-desc">Section : <strong>Pannes répertoriées</strong></p>
+
+  <div class="incident-card">
+    <div class="incident-header">
+      <h3>Panne n°1 : Problème d’alimentation <span class="status">Résolu</span></h3>
+      <p class="date">📅 Date : 14 janvier 2026</p>
+    </div>
+
+    <div class="incident-content">
+      <div class="incident-image">
+        <img src="image-panne.jpg" alt="Illustration panne alimentation PC">
+      </div>
+
+      <div class="incident-details">
+        <p><strong>🖥️ Type de matériel :</strong> HP x360 310 G2 (PC portable convertible)</p>
+
+        <p><strong>🔌 Chargeur :</strong></p>
+        <ul>
+          <li>Entrée (Input) : 100–240V ~ 1.6A / 50–60Hz</li>
+          <li>Sortie (Output) : 19.5V – 3.33A</li>
+        </ul>
+
+        <h4>⚠️ Symptômes observés</h4>
+        <ul>
+          <li>Affichage prolongé d’une croix rouge sur l’icône de la batterie</li>
+          <li>Impossible de maintenir le PC allumé sans être branché au chargeur</li>
+          <li>Disparition soudaine de la croix rouge sur l’icône de la batterie</li>
+          <li>Batterie ne se chargeant pas malgré la connexion au chargeur</li>
+          <li>Extinction brusque du PC après quelques minutes, même lorsqu’il est en charge</li>
+          <li>Comportement instable de l’alimentation électrique</li>
+        </ul>
+
+        <h4>🔍 Diagnostic effectué</h4>
+        <ul>
+          <li>Vérification de la compatibilité du chargeur</li>
+          <li>Observation du comportement batterie / secteur</li>
+          <li>Analyse de la stabilité électrique</li>
+        </ul>
+
+        <h4>🛠️ Solution appliquée</h4>
+        <ul>
+          <li>Remplacement de la batterie défectueuse par une batterie fonctionnelle</li>
+        </ul>
+
+        <h4>✅ Résultat</h4>
+        <ul>
+          <li>Fonctionnement normal du PC</li>
+          <li>Disparition des extinctions brusques</li>
+          <li>Panne d’alimentation résolue</li>
+        </ul>
+
+        <h4>🧠 Compétences mobilisées</h4>
+        <ul class="skills">
+          <li>Diagnostic matériel</li>
+          <li>Spécifications électriques</li>
+          <li>Méthodologie de dépannage</li>
+          <li>Maintenance préventive</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
 
