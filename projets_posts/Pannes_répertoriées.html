@@ -102,6 +102,53 @@
       list-style: none;
       font-size: 13px;
     }
+
+    /* --- Matériel utilisé --- */
+    .materials-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .materials-section h4 {
+      margin-bottom: 15px;
+      color: #222;
+      font-size: 20px;
+    }
+
+    .materials-gallery {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .material-card {
+      flex: 0 0 auto;
+      width: 150px;
+      text-align: center;
+    }
+
+    .material-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .material-card img:hover {
+      transform: scale(1.05);
+    }
+
+    .material-card p {
+      font-size: 14px;
+      color: #555;
+      margin: 0;
+    }
   </style>
 </head>
 
@@ -120,7 +167,6 @@
     <div class="incident-content">
       <div class="incident-image">
         <img src="/img/article1/devant.png" alt="PC">
-
       </div>
 
       <div class="incident-details">
@@ -168,6 +214,27 @@
           <li>Méthodologie de dépannage</li>
           <li>Maintenance préventive</li>
         </ul>
+
+        <!-- --- Matériel utilisé --- -->
+        <div class="materials-section">
+          <h4>💻 Matériel utilisé</h4>
+          <div class="materials-gallery">
+            <div class="material-card">
+              <img src="/img/article1/pc.png" alt="PC HP x360 310 G2">
+              <p>PC HP x360 310 G2</p>
+            </div>
+            <div class="material-card">
+              <img src="/img/article1/battery.png" alt="Batterie K11">
+              <p>Batterie K11</p>
+            </div>
+            <div class="material-card">
+              <img src="/img/article1/charger.png" alt="Chargeur 19.5V 3.33A">
+              <p>Chargeur 19.5V 3.33A</p>
+            </div>
+          </div>
+        </div>
+        <!-- --- Fin Matériel utilisé --- -->
+
       </div>
     </div>
   </div>
@@ -175,4 +242,3 @@
 
 </body>
 </html>
-
