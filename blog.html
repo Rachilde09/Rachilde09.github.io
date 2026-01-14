@@ -3,7 +3,12 @@ layout: default
 title: Blog
 ---
 
-<style>
+---
+layout: default
+title: Projets
+---
+
+  <style>
   body {
     margin: 0;
     padding: 0;
@@ -101,22 +106,24 @@ title: Blog
   <!-- Menu de filtre -->
   <div class="project-filters">
     <button class="filter-button active" data-filter="all">Tous</button>
-    <button class="filter-button" data-filter="maintenance">Maintenance & Dépannage</button>
-    <button class="filter-button" data-filter="explore">Exploration</button>
+    <button class="filter-button" data-filter="web">Exploration</button>
+    <button class="filter-button" data-filter="data">Maintenance</button>
     <button class="filter-button" data-filter="other">Autres</button>
   
   </div>
+
   <!-- Galerie de projets -->
   <div class="project-gallery">
-    
-    <!--Article 1 - Maintenane & dépannage -->
-    <div class="project-item" >
-      <div class="project-item" data-category="maintenance">
+
+    <!-- Article 1 - Pannes répertoriées -->
+    <div class="project-item" data-category="data">
       <a href="/projets_posts/Pannes_répertoriées.html" target="_blank">
         <img src="/img/article1/maintenance.webp" alt="Pannes répertoriées">
         <div class="project-title">Pannes répertoriées</div>
       </a>
     </div>
+
+
 
 
   </div>
